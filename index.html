@@ -1,296 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DM Tours - Your Adventure Awaits</title>
-    
+    <title>DM Tours Sri Lanka - Your Ultimate Gateway to Authentic Sri Lanka Experiences!</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-map-marked-alt me-2"></i>
-                DM Tours
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="./index.html">DM Tours</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
+                        <a class="nav-link active" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#destinations">Destinations</a>
+                        <a class="nav-link" href="./blogs.html">Blogs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#sri-lanka-services">Sri Lanka</a>
+                        <a class="nav-link" href="./about.html">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="./tours.html">Tours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="./testimonials.html">Testimonials</a>
                     </li>
                 </ul>
+
+                                    <div class="navbar-nav">
+                        <a class="nav-link btn btn-primary" href="./contact.html">Contact Us</a>
+                    </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <!-- Video Background -->
-        <div class="video-background">
-            <video autoplay muted loop playsinline>
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-                <!-- Fallback for browsers that don't support video -->
-                <div class="video-fallback"></div>
-            </video>
-            <div class="video-overlay"></div>
-        </div>
-        
-        <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-8 col-md-10">
-                    <h1 class="display-4 fw-bold text-white mb-4">
-                        Discover Amazing Destinations
-                    </h1>
-                    <p class="lead text-white mb-4">
-                        Experience the world's most beautiful places with our expert guides. 
-                        From mountains to beaches, cities to wilderness - your adventure starts here.
-                    </p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary btn-lg me-3 mb-2" onclick="exploreDestinations()">
-                            Explore Destinations
-                        </button>
-                        <button class="btn btn-outline-light btn-lg mb-2" onclick="contactUs()">
-                            Contact Us
-                        </button>
-                    </div>
-                </div>
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                type="video/mp4">
+            <!-- Fallback for browsers that don't support video -->
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 100%; height: 100%;">
             </div>
-        </div>
-    </section>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
 
-    <!-- Destinations Section -->
-    <section id="destinations" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold">Popular Destinations</h2>
-                <p class="lead text-muted">Choose from our carefully curated selection of amazing places</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card destination-card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-mountain fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title">Mountain Adventures</h5>
-                            <p class="card-text">Explore breathtaking mountain ranges with experienced guides.</p>
-                            <button class="btn btn-outline-primary" onclick="showDestination('mountains')">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card destination-card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-umbrella-beach fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title">Beach Getaways</h5>
-                            <p class="card-text">Relax on pristine beaches and enjoy crystal clear waters.</p>
-                            <button class="btn btn-outline-primary" onclick="showDestination('beaches')">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card destination-card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-city fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title">City Tours</h5>
-                            <p class="card-text">Discover vibrant cities with rich history and culture.</p>
-                            <button class="btn btn-outline-primary" onclick="showDestination('cities')">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="content">
+        <h1 class="hero-title">Welcome to DM Tours Sri Lanka</h1>
+        <p class="subtitle">Your Ultimate Gateway to Authentic Sri Lanka Experiences!</p>
+        <a href="#contact" class="cta-button">Contact Now</a>
+    </div>
 
-    <!-- Sri Lanka Services Section -->
-    <section id="sri-lanka-services" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold">Sri Lanka Travel Services</h2>
-                <p class="lead text-muted">Discover the magic of Sri Lanka with our specialized travel packages</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card service-card h-100">
-                        <div class="card-body text-center d-flex flex-column">
-                            <i class="fas fa-gem fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title">Expertly Curated Packages</h5>
-                            <p class="card-text">From luxury holidays to adventure travel, every itinerary captures the diverse charm of Sri Lanka.</p>
-                            <div class="mt-auto">
-                                <button class="btn btn-primary" onclick="showService('packages')">
-                                    View Packages
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card service-card h-100">
-                        <div class="card-body text-center d-flex flex-column">
-                            <i class="fas fa-leaf fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title">Authentic Experiences</h5>
-                            <p class="card-text">Immerse yourself in rich culture, stunning wildlife safaris, and breathtaking scenery.</p>
-                            <div class="mt-auto">
-                                <button class="btn btn-primary" onclick="showService('experiences')">
-                                    Explore More
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card service-card h-100">
-                        <div class="card-body text-center d-flex flex-column">
-                            <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title">Tailored Tours</h5>
-                            <p class="card-text">Customizable adventures that fit your interests and pace for foreign travelers.</p>
-                            <div class="mt-auto">
-                                <button class="btn btn-primary" onclick="showService('tours')">
-                                    Customize Tour
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card service-card h-100">
-                        <div class="card-body text-center d-flex flex-column">
-                            <i class="fas fa-headset fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title">24/7 Global Support</h5>
-                            <p class="card-text">Seamless travel planning for global travelers with round-the-clock customer support.</p>
-                            <div class="mt-auto">
-                                <button class="btn btn-primary" onclick="showService('support')">
-                                    Get Support
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Animated Line -->
+    <div class="animated-line">
+        <div class="line-segment green"></div>
+        <div class="line-segment dark"></div>
+        <div class="line-segment green"></div>
+        <div class="line-segment dark"></div>
+    </div>
 
     <!-- About Section -->
-    <section id="about" class="py-5 bg-light">
+    <section class="about-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="display-5 fw-bold mb-4">About DM Tours</h2>
-                    <p class="lead mb-4">
-                        We are passionate about creating unforgettable travel experiences. 
-                        With over 10 years of experience, we've helped thousands of travelers 
-                        discover the world's most amazing destinations.
-                    </p>
-                    <div class="row text-center">
-                        <div class="col-6">
-                            <div class="stat-item">
-                                <h3 class="text-primary fw-bold">500+</h3>
-                                <p class="text-muted">Happy Travelers</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="stat-item">
-                                <h3 class="text-primary fw-bold">50+</h3>
-                                <p class="text-muted">Destinations</p>
-                            </div>
-                        </div>
+            <div class="about-content">
+                <p>Discover the magic of Sri Lanka with DM Tours, where we specialize in crafting the best tours in Sri
+                    Lanka designed especially for foreigners seeking unforgettable adventures. Whether you're dreaming
+                    of luxury Sri Lanka holidays or authentic cultural tours, we have the perfect travel packages for
+                    you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose DM Tours Sri Lanka?</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Expertly Curated Sri Lanka Travel Packages</h3>
+                        <p class="card-text">From luxury holidays to adventure travel, every itinerary captures the
+                            diverse charm of Sri Lanka.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center">
-                    <div class="about-image">
-                        <i class="fas fa-users fa-5x text-primary"></i>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Authentic Sri Lanka Experiences</h3>
+                        <p class="card-text">Immerse yourself in rich culture, stunning wildlife safaris, and
+                            breathtaking scenery.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Tailored Sri Lanka Tours for Foreigners</h3>
+                        <p class="card-text">Customizable adventures that fit your interests and pace.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">24/7 Worldwide Customer Support</h3>
+                        <p class="card-text">Seamless travel planning for global travelers.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <!-- Analytics Section -->
+    <section class="analytics-section">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold">Contact Us</h2>
-                <p class="lead text-muted">Ready to start your adventure? Get in touch with us!</p>
+            <div class="analytics-box">
+                <div class="analytics-item">
+                    <div class="analytics-number">5000+</div>
+                    <div class="analytics-label">Happy Travelers</div>
+                </div>
+                <div class="analytics-item">
+                    <div class="analytics-number">150+</div>
+                    <div class="analytics-label">Tour Packages</div>
+                </div>
+                <div class="analytics-item">
+                    <div class="analytics-number">25+</div>
+                    <div class="analytics-label">Years Experience</div>
+                </div>
+                <div class="analytics-item">
+                    <div class="analytics-number">98%</div>
+                    <div class="analytics-label">Satisfaction Rate</div>
+                </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card shadow">
-                        <div class="card-body p-5">
-                            <form id="contactForm">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="firstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="firstName" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="lastName" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" rows="4" required></textarea>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-                                </div>
-                            </form>
-                        </div>
+        </div>
+    </section>
+
+    <!-- Popular Tours Section -->
+    <section class="popular-tours-section">
+        <div class="container home-tours">
+            <h2 class="section-title">Explore Our Popular Sri Lanka Tours</h2>
+            <div class="tours-container">
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+                            alt="Luxury Sri Lanka Holidays">
+                    </div>
+                    <div class="tour-content">
+                        <h3 class="tour-title">Luxury Sri Lanka Holidays</h3>
+                        <p class="tour-description">Indulge in pristine beaches, upscale resorts, and exclusive
+                            experiences.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=400&h=300&fit=crop"
+                            alt="Sri Lanka Cultural Tours">
+                    </div>
+                    <div class="tour-content">
+                        <h3 class="tour-title">Sri Lanka Cultural Tours</h3>
+                        <p class="tour-description">Discover heritage sites, traditional arts, and vibrant festivals.
+                        </p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=400&h=300&fit=crop"
+                            alt="Sri Lanka Wildlife Safari Tours">
+                    </div>
+                    <div class="tour-content">
+                        <h3 class="tour-title">Sri Lanka Wildlife Safari Tours</h3>
+                        <p class="tour-description">Witness exotic wildlife in world-renowned national parks.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop"
+                            alt="Sri Lanka Adventure Travel">
+                    </div>
+                    <div class="tour-content">
+                        <h3 class="tour-title">Sri Lanka Adventure Travel</h3>
+                        <p class="tour-description">Trek mountains, explore rainforests, and experience thrilling
+                            outdoor activities.</p>
+                        <a href="#" class="read-more">Read More →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>&copy; 2024 DM Tours. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="banner-overlay"></div>
+        <div class="container">
+            <div class="banner-layout">
+                <div class="banner-content">
+                    <h2 class="banner-title">Start Planning Your Sri Lanka Dream Vacation Today!</h2>
+                    <p class="banner-description">Join thousands of global travelers who trust DM Tours Sri Lanka for
+                        authentic, memorable experiences. Contact us now to explore our best tours in Sri Lanka and take
+                        advantage of our exclusive Sri Lanka holiday deals.</p>
+                    <div class="banner-tagline">DM Tours Sri Lanka – Discover Authenticity, Experience Luxury, Embrace
+                        Adventure!</div>
+                    <a href="#contact" class="banner-cta">Contact Us Now</a>
+                </div>
+                <div class="banner-image">
+                    <img src="./assets/sri-lanka-illustration.png" alt="Sri Lanka Tourism Illustration">
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-bg"></div>
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real experiences from travelers who chose DM Tours Sri Lanka</p>
+                            <a href="./testimonials.html" class="btn btn-primary btn-lg testimonials-btn mt-5">
+                <i class="fas fa-comments me-2"></i>
+                Read All Testimonials
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Tours Section -->
+<section id="tours" class="popular-tours-section">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title">Explore Our Popular Sri Lanka Tours</h2>
+            <p class="section-subtitle">Discover the magic of Sri Lanka through our carefully crafted tour packages</p>
+        </div>
+        
+        <div class="home-tours-grid">
+            <div class="home-tour-card">
+                <div class="home-tour-image">
+                    <img src="./assets/sri-lanka-culture.jpg" alt="Cultural Heritage Tour">
+                </div>
+                <div class="home-tour-content">
+                    <div class="tour-duration">Duration: 5 Days</div>
+                    <h3 class="tour-title">Cultural Heritage Tour</h3>
+                    <div class="tour-cities">Kandy • Dambulla • Sigiriya • Anuradhapura</div>
+                    <p class="tour-description">Immerse yourself in Sri Lanka's rich cultural heritage. Visit ancient temples, explore the sacred city of Kandy with its Temple of the Tooth, climb the iconic Sigiriya Rock Fortress, and discover the ancient ruins of Anuradhapura.</p>
+                    <ul class="tour-features">
+                        <li><i class="fas fa-temple-buddhist"></i> Temple of the Tooth Relic</li>
+                        <li><i class="fas fa-mountain"></i> Sigiriya Rock Fortress</li>
+                        <li><i class="fas fa-landmark"></i> Ancient Anuradhapura Ruins</li>
+                        <li><i class="fas fa-music"></i> Traditional Dance Shows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="home-tour-card">
+                <div class="home-tour-image">
+                    <img src="./assets/sri-lanka-wildlife.jpg" alt="Wildlife Safari Adventure">
+                </div>
+                <div class="home-tour-content">
+                    <div class="tour-duration">Duration: 5 Days</div>
+                    <h3 class="tour-title">Wildlife Safari Adventure</h3>
+                    <div class="tour-cities">Yala • Udawalawe • Sinharaja • Mirissa</div>
+                    <p class="tour-description">Embark on an unforgettable wildlife adventure through Sri Lanka's most spectacular national parks. Spot leopards, elephants, and exotic birds in Yala National Park, enjoy whale watching in Mirissa.</p>
+                    <ul class="tour-features">
+                        <li><i class="fas fa-paw"></i> Leopard & Elephant Spotting</li>
+                        <li><i class="fas fa-whale"></i> Whale Watching in Mirissa</li>
+                        <li><i class="fas fa-tree"></i> Sinharaja Forest Reserve</li>
+                        <li><i class="fas fa-car"></i> Thrilling Jeep Safaris</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="home-tour-card">
+                <div class="home-tour-image">
+                    <img src="./assets/sri-lanka-beach.jpg" alt="Beach & Luxury Escape">
+                </div>
+                <div class="home-tour-content">
+                    <div class="tour-duration">Duration: 5 Days</div>
+                    <h3 class="tour-title">Beach & Luxury Escape</h3>
+                    <div class="tour-cities">Bentota • Galle • Unawatuna • Hikkaduwa</div>
+                    <p class="tour-description">Relax and rejuvenate on Sri Lanka's pristine beaches. Stay in luxury beachfront resorts, explore the historic Galle Fort, enjoy water sports in Bentota, snorkel in crystal-clear waters.</p>
+                    <ul class="tour-features">
+                        <li><i class="fas fa-umbrella-beach"></i> Luxury Beachfront Resorts</li>
+                        <li><i class="fas fa-fort-awesome"></i> Historic Galle Fort</li>
+                        <li><i class="fas fa-water"></i> Water Sports & Snorkeling</li>
+                        <li><i class="fas fa-sun"></i> Breathtaking Sunsets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="./tours.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                View All Tours
+            </a>
+        </div>
+    </div>
+</section>
+
+    <script>
+        // Add smooth scrolling for the CTA button
+        document.querySelector('.cta-button').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // You can replace this with your actual contact form or contact information
+            alert('Thank you for your interest! Please contact us at:\n\n📧 info@dmtours.lk\n📞 +94 11 234 5678\n🌐 www.dmtours.lk');
+
+            // Alternative: Scroll to a contact section if you have one
+            // document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function () {
+            const content = document.querySelector('.content');
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(30px)';
+
+            setTimeout(() => {
+                content.style.transition = 'all 1s ease';
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 300);
+        });
+
+        // Mouse movement animation for hero section
+        document.addEventListener('mousemove', function (e) {
+            const content = document.querySelector('.content');
+            if (content) {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                // Calculate movement (subtle effect)
+                const moveX = (mouseX - 0.5) * 20; // Max 20px movement
+                const moveY = (mouseY - 0.5) * 15; // Max 15px movement
+
+                // Apply transform with smooth transition
+                content.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+
+        // Count up animation for analytics
+        function animateCountUp(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+
+            function updateCount() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start) + (element.textContent.includes('+') ? '+' : '') + (element.textContent.includes('%') ? '%' : '');
+                    requestAnimationFrame(updateCount);
+                } else {
+                    element.textContent = target + (element.textContent.includes('+') ? '+' : '') + (element.textContent.includes('%') ? '%' : '');
+                }
+            }
+
+            updateCount();
+        }
+
+        // Intersection Observer for analytics animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const analyticsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.analytics-number');
+                    numbers.forEach((number, index) => {
+                        setTimeout(() => {
+                            const target = parseInt(number.textContent.replace(/\D/g, ''));
+                            animateCountUp(number, target, 2000);
+                        }, index * 300);
+                    });
+                    analyticsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe analytics section
+        document.addEventListener('DOMContentLoaded', function () {
+            const analyticsSection = document.querySelector('.analytics-box');
+            if (analyticsSection) {
+                analyticsObserver.observe(analyticsSection);
+            }
+        });
+
+        // Testimonials Carousel
+        let currentTestimonialIndex = 0;
+        const totalTestimonials = 5;
+
+        function showTestimonial(index) {
+            const cards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.dot');
+
+            // Hide all cards
+            cards.forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // Remove active class from all dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+
+            // Show current card and activate current dot
+            cards[index].classList.add('active');
+            dots[index].classList.add('active');
+
+            currentTestimonialIndex = index;
+        }
+
+        function nextTestimonial() {
+            const nextIndex = (currentTestimonialIndex + 1) % totalTestimonials;
+            showTestimonial(nextIndex);
+        }
+
+        function previousTestimonial() {
+            const prevIndex = (currentTestimonialIndex - 1 + totalTestimonials) % totalTestimonials;
+            showTestimonial(prevIndex);
+        }
+
+        function initTestimonialsCarousel() {
+            const dots = document.querySelectorAll('.dot');
+
+            // Click functionality for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showTestimonial(index);
+                });
+            });
+
+            // Initialize first testimonial
+            showTestimonial(0);
+
+            // Auto-advance every 6 seconds
+            setInterval(nextTestimonial, 6000);
+        }
+
+        // Initialize testimonials carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            initTestimonialsCarousel();
+        });
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JavaScript -->
-    <script src="script.js"></script>
 </body>
-</html> 
+
+</html>
