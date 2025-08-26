@@ -1420,9 +1420,11 @@ body {
 
 /* Blog Hero Section */
 .blogs-hero {
-    background: linear-gradient(135deg, #142328 0%, #06C167 100%);
-    padding: 8rem 0 4rem;
     position: relative;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
@@ -1430,30 +1432,31 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('./assets/sri-lanka-banner.jpg') center/cover;
-    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    background: url('./assets/sri-lanka-banner.jpg') center center/cover no-repeat;
+    z-index: 1;
 }
 
 .blogs-hero .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(20, 35, 40, 0.8) 0%, rgba(6, 193, 103, 0.8) 100%);
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 35, 40, 0.6);
+    z-index: 2;
 }
 
 .blogs-hero .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     color: white;
 }
 
 .blogs-hero .hero-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -1462,9 +1465,9 @@ body {
 .blogs-hero .hero-subtitle {
     font-size: 1.2rem;
     font-weight: 400;
-    opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Blog Categories Section */
@@ -1499,6 +1502,22 @@ body {
     color: white;
     transform: translateY(-2px);
 }
+
+/* All Blogs Button */
+.all-blogs-btn {
+    color: #06C167;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
 
 /* Blogs Section */
 .blogs-section {
@@ -2182,9 +2201,11 @@ body {
 
 /* About Hero Section */
 .about-hero {
-    background: linear-gradient(135deg, #142328 0%, #06C167 100%);
-    padding: 8rem 0 4rem;
     position: relative;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
@@ -2192,30 +2213,31 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('./assets/sri-lanka-banner.jpg') center/cover;
-    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    background: url('./assets/sri-lanka-banner.jpg') center center/cover no-repeat;
+    z-index: 1;
 }
 
 .about-hero .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(20, 35, 40, 0.8) 0%, rgba(6, 193, 103, 0.8) 100%);
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 35, 40, 0.6);
+    z-index: 2;
 }
 
 .about-hero .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     color: white;
 }
 
 .about-hero .hero-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -2224,9 +2246,9 @@ body {
 .about-hero .hero-subtitle {
     font-size: 1.2rem;
     font-weight: 400;
-    opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Company Story Section */
@@ -2685,9 +2707,11 @@ body {
 
 /* Contact Hero Section */
 .contact-hero {
-    background: linear-gradient(135deg, #142328 0%, #06C167 100%);
-    padding: 8rem 0 4rem;
     position: relative;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
@@ -2695,30 +2719,31 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('./assets/sri-lanka-banner.jpg') center/cover;
-    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    background: url('./assets/sri-lanka-banner.jpg') center center/cover no-repeat;
+    z-index: 1;
 }
 
 .contact-hero .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(20, 35, 40, 0.8) 0%, rgba(6, 193, 103, 0.8) 100%);
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 35, 40, 0.6);
+    z-index: 2;
 }
 
 .contact-hero .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     color: white;
 }
 
 .contact-hero .hero-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -2727,9 +2752,9 @@ body {
 .contact-hero .hero-subtitle {
     font-size: 1.2rem;
     font-weight: 400;
-    opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Contact Information Section */
@@ -3315,6 +3340,58 @@ body {
     }
 }
 
+/* Blog Single Hero Section */
+.blog-single-hero {
+    position: relative;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.blog-single-hero .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./assets/sri-lanka-banner.jpg') center center/cover no-repeat;
+    z-index: 1;
+}
+
+.blog-single-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 35, 40, 0.6);
+    z-index: 2;
+}
+
+.blog-single-hero .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+}
+
+.blog-single-hero .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.blog-single-hero .hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 /* Testimonials Page Specific Styles */
 .testimonials-hero {
     position: relative;
@@ -3331,7 +3408,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('./assets/pexels-sebastian-189349.jpg') center center/cover no-repeat;
+    background: url('./assets/sri-lanka-banner.jpg') center center/cover no-repeat;
     z-index: 1;
 }
 
@@ -3341,7 +3418,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(20, 35, 40, 0.7);
+    background: rgba(20, 35, 40, 0.6);
     z-index: 2;
 }
 
@@ -3350,22 +3427,21 @@ body {
     z-index: 3;
     text-align: center;
     color: white;
-    padding: 2rem;
 }
 
 .testimonials-hero .hero-title {
-    font-family: 'Poppins', sans-serif;
     font-size: 3rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1rem;
-    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .testimonials-hero .hero-subtitle {
-    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Testimonials Grid for Testimonials Page */
@@ -3499,4 +3575,337 @@ body {
 
 .home-tours .tour-card .tour-content {
     width: 100%;
+}
+
+/* ===== FOOTER STYLES ===== */
+.footer {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: #ffffff;
+    padding: 4rem 0 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #06C167, transparent);
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-section {
+    margin-bottom: 3rem;
+}
+
+.footer-section h4 {
+    color: #06C167;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #06C167;
+    border-radius: 1px;
+}
+
+.footer-section p {
+    color: #b0b0b0;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-links a:hover {
+    color: #06C167;
+}
+
+.footer-links a::before {
+    content: '→';
+    margin-right: 8px;
+    color: #06C167;
+    opacity: 0;
+}
+
+.footer-links a:hover::before {
+    opacity: 1;
+}
+
+.footer-contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact-info li {
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.footer-contact-info i {
+    color: #06C167;
+    font-size: 1.1rem;
+    margin-top: 2px;
+    min-width: 20px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(6, 193, 103, 0.1);
+    border: 1px solid rgba(6, 193, 103, 0.3);
+    border-radius: 50%;
+    color: #06C167;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-social-links a:hover {
+    background: #06C167;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(6, 193, 103, 0.3);
+}
+
+.footer-newsletter {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-newsletter h5 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-newsletter p {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.footer-newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.footer-newsletter-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.footer-newsletter-form input::placeholder {
+    color: #b0b0b0;
+}
+
+.footer-newsletter-form input:focus {
+    outline: none;
+    border-color: #06C167;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.footer-newsletter-form button {
+    padding: 12px 20px;
+    background: #06C167;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.footer-newsletter-form button:hover {
+    background: #05a85a;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    background: #000000;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-copyright {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-bottom-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: #06C167;
+}
+
+.footer-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #06C167;
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.footer-back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.footer-back-to-top:hover {
+    background: #05a85a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(6, 193, 103, 0.3);
+}
+
+/* Footer Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 0 0 0;
+    }
+    
+    .footer-section {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-social-links {
+        justify-content: center;
+    }
+    
+    .footer-newsletter-form {
+        flex-direction: column;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .footer-back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 2rem 0 0 0;
+    }
+    
+    .footer-section h4 {
+        font-size: 1.2rem;
+    }
+    
+    .footer-social-links {
+        gap: 0.8rem;
+    }
+    
+    .footer-social-links a {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .footer-bottom-links {
+        gap: 1rem;
+        font-size: 0.8rem;
+    }
 }
