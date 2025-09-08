@@ -4,20 +4,254 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blogs - DM Tours Sri Lanka</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <title>Blogs - DM Tours Sri Lanka | Travel Stories & Insights</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Discover Sri Lanka through our travel stories, cultural insights, adventure guides, and local tips. Read expert blogs about Sri Lankan culture, wildlife, food, and travel experiences with DM Tours." />
+  <meta name="keywords" content="Sri Lanka travel blog, Sri Lanka travel stories, Sri Lanka culture blog, Sri Lanka adventure guide, Sri Lanka travel tips, DM Tours blog" />
+  <meta name="author" content="DM Tours Sri Lanka" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://dmtours.lk/blogs.html" />
+  
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Critical CSS inline - only above-the-fold content -->
+  <style>
+    /* Critical above-the-fold styles only */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; overflow-x: hidden; height: 100vh; position: relative; }
+    .navbar { background: #142328 !important; padding: 1rem 0; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+    .navbar-brand { color: white !important; font-size: 1.8rem; font-weight: 700; font-family: 'Poppins', sans-serif; text-decoration: none; }
+    .navbar-nav .nav-link { color: white !important; font-weight: 500; font-size: 1rem; margin: 0 1rem; transition: color 0.3s ease; position: relative; text-decoration: none; }
+    .navbar-nav .nav-link:hover { color: #06C167 !important; }
+    .navbar-nav .nav-link.active { color: #06C167 !important; }
+    .blogs-hero { position: relative; height: 60vh; display: flex; align-items: center; background: linear-gradient(135deg, #142328 0%, #2c3e50 100%); }
+    .hero-content { text-align: center; color: white; z-index: 10; position: relative; }
+    .hero-title { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif; }
+    .hero-subtitle { font-size: 1.2rem; margin-bottom: 2rem; font-weight: 400; line-height: 1.6; }
+    .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: #142328; text-align: center; }
+    
+    /* Enhanced Blog Card Styles */
+    .blog-card { 
+      background: white; 
+      border-radius: 20px; 
+      overflow: hidden; 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover { 
+      transform: translateY(-8px) scale(1.02); 
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); 
+      border-color: #06C167;
+    }
+    .blog-image { 
+      position: relative; 
+      overflow: hidden; 
+      height: 220px; 
+      background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    }
+    .blog-image img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      transition: transform 0.4s ease;
+    }
+    .blog-card:hover .blog-image img { 
+      transform: scale(1.1); 
+    }
+    .blog-category { 
+      position: absolute; 
+      top: 15px; 
+      left: 15px; 
+      background: linear-gradient(135deg, #06C167, #05a85a); 
+      color: white; 
+      padding: 6px 12px; 
+      border-radius: 20px; 
+      font-size: 0.8rem; 
+      font-weight: 600; 
+      text-transform: uppercase; 
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(6, 193, 103, 0.3);
+    }
+    .blog-content { 
+      padding: 25px; 
+      flex: 1; 
+      display: flex; 
+      flex-direction: column; 
+    }
+    .blog-meta { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      margin-bottom: 15px; 
+      font-size: 0.85rem; 
+      color: #666; 
+    }
+    .blog-meta span { 
+      display: flex; 
+      align-items: center; 
+      gap: 5px; 
+    }
+    .blog-meta i { 
+      color: #06C167; 
+      font-size: 0.9rem; 
+    }
+    .blog-title { 
+      font-size: 1.4rem; 
+      font-weight: 700; 
+      margin-bottom: 15px; 
+      color: #142328; 
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-excerpt { 
+      color: #666; 
+      line-height: 1.7; 
+      margin-bottom: 20px; 
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-tags { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 8px; 
+      margin-bottom: 20px; 
+    }
+    .tag { 
+      background: #f8f9fa; 
+      color: #666; 
+      padding: 4px 10px; 
+      border-radius: 15px; 
+      font-size: 0.75rem; 
+      font-weight: 500; 
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+    .tag:hover { 
+      background: #06C167; 
+      color: white; 
+      border-color: #06C167; 
+    }
+    .read-more-btn { 
+      text-decoration: none; 
+      color: inherit; 
+      display: block; 
+      height: 100%;
+    }
+    .read-more-btn:hover { 
+      text-decoration: none; 
+      color: inherit; 
+    }
+    .blog-read-more { 
+      background: linear-gradient(135deg, #06C167, #05a85a); 
+      color: white; 
+      padding: 12px 20px; 
+      border-radius: 25px; 
+      text-decoration: none; 
+      font-weight: 600; 
+      font-size: 0.9rem; 
+      text-align: center; 
+      transition: all 0.3s ease; 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+      margin-top: auto;
+      box-shadow: 0 4px 15px rgba(6, 193, 103, 0.3);
+    }
+    .blog-read-more:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 25px rgba(6, 193, 103, 0.4); 
+      color: white; 
+      text-decoration: none; 
+    }
+    .blog-read-more i { 
+      transition: transform 0.3s ease; 
+    }
+    .blog-read-more:hover i { 
+      transform: translateX(3px); 
+    }
+    
+    .category-btn { 
+      background: #f8f9fa; 
+      border: 2px solid #e9ecef; 
+      padding: 12px 24px; 
+      margin: 5px; 
+      border-radius: 30px; 
+      color: #666; 
+      font-weight: 600; 
+      transition: all 0.3s ease; 
+      cursor: pointer; 
+      font-size: 0.9rem;
+    }
+    .category-btn:hover, .category-btn.active { 
+      background: linear-gradient(135deg, #06C167, #05a85a); 
+      color: white; 
+      border-color: #06C167; 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(6, 193, 103, 0.3);
+    }
+    .sr-only { 
+      position: absolute !important; 
+      width: 1px !important; 
+      height: 1px !important; 
+      padding: 0 !important; 
+      margin: -1px !important; 
+      overflow: hidden !important; 
+      clip: rect(0, 0, 0, 0) !important; 
+      white-space: nowrap !important; 
+      border: 0 !important; 
+    }
+  </style>
+  
+  <!-- Defer non-critical CSS to load after page render -->
+  <script>
+    // Load non-critical CSS after page load
+    function loadCSS(href, media = 'all') {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.media = media;
+      document.head.appendChild(link);
+    }
+    
+    // Load CSS after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load Bootstrap only for components that need it
+      loadCSS('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+      
+      // Load Font Awesome only for icons that are used
+      loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+      
+      // Load main stylesheet
+      loadCSS('styles.css');
+    });
+  </script>
+  
+  <!-- Fallback for browsers that don't support JavaScript -->
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J1CJNL2JC3"></script>
@@ -130,196 +364,202 @@
 
       <div class="row g-4">
         <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="culture">
-          <a href="./blog-single.html" class="read-more-btn">
-            <div class="blog-card h-100">
-              <div class="blog-image">
-                <img src="./assets/adventure.jpg" alt="Temple of the Tooth Relic" class="img-fluid" />
-                <div class="blog-category">Culture</div>
-              </div>
-              <div class="blog-content">
-                <div class="blog-meta">
-                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 15, 2025</span>
-                  <span class="blog-author"><i class="fas fa-user"></i> By Sarah Johnson</span>
-                </div>
-                <h3 class="blog-title">
-                  The Sacred Temple of the Tooth Relic: A Spiritual Journey in
-                  Kandy
-                </h3>
-                <p class="blog-excerpt">
-                  Discover the spiritual heart of Sri Lanka at the Temple of
-                  the Tooth Relic in Kandy. This UNESCO World Heritage site
-                  houses one of Buddhism's most sacred relics and offers
-                  visitors a profound glimpse into the country's rich
-                  religious heritage.
-                </p>
-                <div class="blog-tags">
-                  <span class="tag">Kandy</span>
-                  <span class="tag">Buddhism</span>
-                  <span class="tag">UNESCO</span>
-                </div>
-              </div>
+          <div class="blog-card h-100">
+            <div class="blog-image">
+              <img src="./assets/adventure.jpg" alt="Temple of the Tooth Relic" class="img-fluid" />
+              <div class="blog-category">Culture</div>
             </div>
-          </a>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 15, 2025</span>
+                <span class="blog-author"><i class="fas fa-user"></i> By Sarah Johnson</span>
+              </div>
+              <h3 class="blog-title">
+                The Sacred Temple of the Tooth Relic: A Spiritual Journey in
+                Kandy
+              </h3>
+              <p class="blog-excerpt">
+                Discover the spiritual heart of Sri Lanka at the Temple of
+                the Tooth Relic in Kandy. This UNESCO World Heritage site
+                houses one of Buddhism's most sacred relics and offers
+                visitors a profound glimpse into the country's rich
+                religious heritage.
+              </p>
+              <div class="blog-tags">
+                <span class="tag">Kandy</span>
+                <span class="tag">Buddhism</span>
+                <span class="tag">UNESCO</span>
+              </div>
+              <a href="./blog-single.html" class="blog-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="adventure">
-          <a href="./blog-single.html" class="read-more-btn">
-            <div class="blog-card h-100">
-              <div class="blog-image">
-                <img src="./assets/home-page-banner.jpg" alt="Adam's Peak Sunrise" class="img-fluid" />
-                <div class="blog-category">Adventure</div>
-              </div>
-              <div class="blog-content">
-                <div class="blog-meta">
-                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 12, 2025</span>
-                  <span class="blog-author"><i class="fas fa-user"></i> By Mike Chen</span>
-                </div>
-                <h3 class="blog-title">
-                  Climbing Adam's Peak: A Sunrise Adventure You'll Never
-                  Forget
-                </h3>
-                <p class="blog-excerpt">
-                  Embark on the ultimate Sri Lankan adventure by climbing
-                  Adam's Peak at night to witness the breathtaking sunrise
-                  from the summit. This challenging yet rewarding trek offers
-                  spectacular views and a spiritual experience like no other.
-                </p>
-                <div class="blog-tags">
-                  <span class="tag">Adam's Peak</span>
-                  <span class="tag">Hiking</span>
-                  <span class="tag">Sunrise</span>
-                </div>
-              </div>
+          <div class="blog-card h-100">
+            <div class="blog-image">
+              <img src="./assets/home-page-banner.jpg" alt="Adam's Peak Sunrise" class="img-fluid" />
+              <div class="blog-category">Adventure</div>
             </div>
-          </a>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 12, 2025</span>
+                <span class="blog-author"><i class="fas fa-user"></i> By Mike Chen</span>
+              </div>
+              <h3 class="blog-title">
+                Climbing Adam's Peak: A Sunrise Adventure You'll Never
+                Forget
+              </h3>
+              <p class="blog-excerpt">
+                Embark on the ultimate Sri Lankan adventure by climbing
+                Adam's Peak at night to witness the breathtaking sunrise
+                from the summit. This challenging yet rewarding trek offers
+                spectacular views and a spiritual experience like no other.
+              </p>
+              <div class="blog-tags">
+                <span class="tag">Adam's Peak</span>
+                <span class="tag">Hiking</span>
+                <span class="tag">Sunrise</span>
+              </div>
+              <a href="./blog-single.html" class="blog-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="food">
-          <a href="./blog-single.html" class="read-more-btn">
-            <div class="blog-card h-100">
-              <div class="blog-image">
-                <img src="./assets/hotel.jpg" alt="Sri Lankan Curry" class="img-fluid" />
-                <div class="blog-category">Food & Cuisine</div>
-              </div>
-              <div class="blog-content">
-                <div class="blog-meta">
-                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 10, 2025</span>
-                  <span class="blog-author"><i class="fas fa-user"></i> By Priya Patel</span>
-                </div>
-                <h3 class="blog-title">
-                  A Culinary Journey Through Sri Lanka: From Street Food to
-                  Fine Dining
-                </h3>
-                <p class="blog-excerpt">
-                  Explore the diverse and flavorful world of Sri Lankan
-                  cuisine. From spicy curries and fresh seafood to aromatic
-                  rice dishes and tropical fruits, discover why Sri Lanka is
-                  becoming a food lover's paradise.
-                </p>
-                <div class="blog-tags">
-                  <span class="tag">Cuisine</span>
-                  <span class="tag">Street Food</span>
-                  <span class="tag">Curry</span>
-                </div>
-              </div>
+          <div class="blog-card h-100">
+            <div class="blog-image">
+              <img src="./assets/hotel.jpg" alt="Sri Lankan Curry" class="img-fluid" />
+              <div class="blog-category">Food & Cuisine</div>
             </div>
-          </a>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 10, 2025</span>
+                <span class="blog-author"><i class="fas fa-user"></i> By Priya Patel</span>
+              </div>
+              <h3 class="blog-title">
+                A Culinary Journey Through Sri Lanka: From Street Food to
+                Fine Dining
+              </h3>
+              <p class="blog-excerpt">
+                Explore the diverse and flavorful world of Sri Lankan
+                cuisine. From spicy curries and fresh seafood to aromatic
+                rice dishes and tropical fruits, discover why Sri Lanka is
+                becoming a food lover's paradise.
+              </p>
+              <div class="blog-tags">
+                <span class="tag">Cuisine</span>
+                <span class="tag">Street Food</span>
+                <span class="tag">Curry</span>
+              </div>
+              <a href="./blog-single.html" class="blog-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="wildlife">
-          <a href="./blog-single.html" class="read-more-btn">
-            <div class="blog-card h-100">
-              <div class="blog-image">
-                <img src="./assets/adventure.jpg" alt="Leopard in Yala" class="img-fluid" />
-                <div class="blog-category">Wildlife</div>
-              </div>
-              <div class="blog-content">
-                <div class="blog-meta">
-                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 8, 2025</span>
-                  <span class="blog-author"><i class="fas fa-user"></i> By David Wilson</span>
-                </div>
-                <h3 class="blog-title">
-                  Wildlife Safari in Yala National Park: Spotting Leopards and
-                  Elephants
-                </h3>
-                <p class="blog-excerpt">
-                  Experience the thrill of wildlife photography in Yala
-                  National Park, home to the highest density of leopards in
-                  the world. Learn the best times to visit and tips for
-                  capturing amazing wildlife moments.
-                </p>
-                <div class="blog-tags">
-                  <span class="tag">Yala</span>
-                  <span class="tag">Wildlife</span>
-                  <span class="tag">Safari</span>
-                </div>
-              </div>
+          <div class="blog-card h-100">
+            <div class="blog-image">
+              <img src="./assets/adventure.jpg" alt="Leopard in Yala" class="img-fluid" />
+              <div class="blog-category">Wildlife</div>
             </div>
-          </a>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 8, 2025</span>
+                <span class="blog-author"><i class="fas fa-user"></i> By David Wilson</span>
+              </div>
+              <h3 class="blog-title">
+                Wildlife Safari in Yala National Park: Spotting Leopards and
+                Elephants
+              </h3>
+              <p class="blog-excerpt">
+                Experience the thrill of wildlife photography in Yala
+                National Park, home to the highest density of leopards in
+                the world. Learn the best times to visit and tips for
+                capturing amazing wildlife moments.
+              </p>
+              <div class="blog-tags">
+                <span class="tag">Yala</span>
+                <span class="tag">Wildlife</span>
+                <span class="tag">Safari</span>
+              </div>
+              <a href="./blog-single.html" class="blog-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="travel-tips">
-          <a href="./blog-single.html" class="read-more-btn">
-            <div class="blog-card h-100">
-              <div class="blog-image">
-                <img src="./assets/hotel.jpg" alt="Beach in Sri Lanka" class="img-fluid" />
-                <div class="blog-category">Travel Tips</div>
-              </div>
-              <div class="blog-content">
-                <div class="blog-meta">
-                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 5, 2025</span>
-                  <span class="blog-author"><i class="fas fa-user"></i> By Emma Thompson</span>
-                </div>
-                <h3 class="blog-title">
-                  Best Time to Visit Sri Lanka: Weather, Crowds, and Festivals
-                  Guide
-                </h3>
-                <p class="blog-excerpt">
-                  Plan your perfect Sri Lanka trip with our comprehensive
-                  guide to weather patterns, peak seasons, and cultural
-                  festivals. Find the ideal time to visit based on your
-                  interests and travel style.
-                </p>
-                <div class="blog-tags">
-                  <span class="tag">Travel Tips</span>
-                  <span class="tag">Weather</span>
-                  <span class="tag">Festivals</span>
-                </div>
-              </div>
+          <div class="blog-card h-100">
+            <div class="blog-image">
+              <img src="./assets/hotel.jpg" alt="Beach in Sri Lanka" class="img-fluid" />
+              <div class="blog-category">Travel Tips</div>
             </div>
-          </a>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 5, 2025</span>
+                <span class="blog-author"><i class="fas fa-user"></i> By Emma Thompson</span>
+              </div>
+              <h3 class="blog-title">
+                Best Time to Visit Sri Lanka: Weather, Crowds, and Festivals
+                Guide
+              </h3>
+              <p class="blog-excerpt">
+                Plan your perfect Sri Lanka trip with our comprehensive
+                guide to weather patterns, peak seasons, and cultural
+                festivals. Find the ideal time to visit based on your
+                interests and travel style.
+              </p>
+              <div class="blog-tags">
+                <span class="tag">Travel Tips</span>
+                <span class="tag">Weather</span>
+                <span class="tag">Festivals</span>
+              </div>
+              <a href="./blog-single.html" class="blog-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="culture">
-          <a href="./blog-single.html" class="read-more-btn">
-            <div class="blog-card h-100">
-              <div class="blog-image">
-                <img src="./assets/wild.jpg" alt="Traditional Dance" class="img-fluid" />
-                <div class="blog-category">Culture</div>
-              </div>
-              <div class="blog-content">
-                <div class="blog-meta">
-                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 3, 2025</span>
-                  <span class="blog-author"><i class="fas fa-user"></i> By Rajesh Kumar</span>
-                </div>
-                <h3 class="blog-title">
-                  Traditional Sri Lankan Dance: The Art of Kandyan and Low
-                  Country Styles
-                </h3>
-                <p class="blog-excerpt">
-                  Immerse yourself in the vibrant world of Sri Lankan
-                  traditional dance. Discover the history, costumes, and
-                  significance of Kandyan and Low Country dance forms that
-                  have been preserved for generations.
-                </p>
-                <div class="blog-tags">
-                  <span class="tag">Dance</span>
-                  <span class="tag">Tradition</span>
-                  <span class="tag">Kandyan</span>
-                </div>
-              </div>
+          <div class="blog-card h-100">
+            <div class="blog-image">
+              <img src="./assets/wild.jpg" alt="Traditional Dance" class="img-fluid" />
+              <div class="blog-category">Culture</div>
             </div>
-          </a>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 3, 2025</span>
+                <span class="blog-author"><i class="fas fa-user"></i> By Rajesh Kumar</span>
+              </div>
+              <h3 class="blog-title">
+                Traditional Sri Lankan Dance: The Art of Kandyan and Low
+                Country Styles
+              </h3>
+              <p class="blog-excerpt">
+                Immerse yourself in the vibrant world of Sri Lankan
+                traditional dance. Discover the history, costumes, and
+                significance of Kandyan and Low Country dance forms that
+                have been preserved for generations.
+              </p>
+              <div class="blog-tags">
+                <span class="tag">Dance</span>
+                <span class="tag">Tradition</span>
+                <span class="tag">Kandyan</span>
+              </div>
+              <a href="./blog-single.html" class="blog-read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -350,8 +590,22 @@
       </div>
     </section> -->
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Defer Bootstrap JS to load after critical content -->
+  <script>
+    // Load Bootstrap JS after page load
+    function loadJS(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      if (callback) script.onload = callback;
+      document.head.appendChild(script);
+    }
+    
+    // Load Bootstrap JS after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      loadJS('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js');
+    });
+  </script>
 
   <script>
     // Category filtering functionality
@@ -403,23 +657,32 @@
         <div class="row">
           <div class="col-12 col-lg-4">
             <div class="footer-section">
-              <h4>DM Tours Sri Lanka</h4>
+              <h3>DM Tours Sri Lanka</h3>
               <p>
                 Your trusted partner for authentic Sri Lanka experiences. We
                 specialize in crafting unforgettable journeys that showcase
                 the true essence of this beautiful island nation.
               </p>
               <div class="footer-social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/dmtourslanka" target="_blank" rel="noopener noreferrer" aria-label="Follow DM Tours Sri Lanka on Facebook">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                  <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/dmtourslanka" target="_blank" rel="noopener noreferrer" aria-label="Follow DM Tours Sri Lanka on Instagram">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                  <span class="sr-only">Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/dmtourslanka" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to DM Tours Sri Lanka on YouTube">
+                  <i class="fab fa-youtube" aria-hidden="true"></i>
+                  <span class="sr-only">YouTube</span>
+                </a>
               </div>
             </div>
           </div>
           <div class="col-12 col-lg-2"></div>
           <div class="col-12 col-lg-3">
             <div class="footer-section">
-              <h4>Quick Links</h4>
+              <h3>Quick Links</h3>
               <ul class="footer-links">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About Us</a></li>
@@ -431,7 +694,7 @@
           </div>
           <div class="col-12 col-lg-3">
             <div class="footer-section">
-              <h4>Contact Info</h4>
+              <h3>Contact Info</h3>
               <ul class="footer-contact-info">
                 <li>
                   <i class="fas fa-map-marker-alt"></i> 123 Galle Road,

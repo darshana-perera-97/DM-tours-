@@ -121,6 +121,10 @@ body {
     height: 75vh;
     z-index: -1;
     overflow: hidden;
+    background-image: url('./assets/home-page-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .video-background video {
@@ -133,6 +137,12 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.video-background video.loaded {
+    opacity: 1;
 }
 
 .video-overlay {
@@ -544,19 +554,28 @@ body {
 }
 
 .read-more {
-    color: #06C167;
+    color: #0066cc;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9rem;
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
     display: inline-block;
+    background: linear-gradient(135deg, #06C167 0%, #05a85a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .read-more:hover {
-    color: #05a85a;
+    color: #004499;
     transform: translateX(5px);
     text-decoration: none;
+    background: linear-gradient(135deg, #004499 0%, #003366 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Banner Section Styles */
@@ -624,27 +643,30 @@ body {
 }
 
 .banner-cta {
-    background: #06C167;
-    color: white;
+    background: linear-gradient(135deg, #06C167 0%, #05a85a 100%);
+    color: #ffffff;
     padding: 18px 40px;
     text-decoration: none;
     border-radius: 50px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.2rem;
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 10px 30px rgba(6, 193, 103, 0.3);
+    box-shadow: 0 10px 30px rgba(6, 193, 103, 0.4);
+    border: 3px solid #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .banner-cta:hover {
-    background: #05a85a;
+    background: linear-gradient(135deg, #05a85a 0%, #048a4a 100%);
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(6, 193, 103, 0.4);
-    color: white;
+    box-shadow: 0 15px 40px rgba(6, 193, 103, 0.5);
+    color: #ffffff;
     text-decoration: none;
+    border-color: #ffffff;
 }
 
 .banner-image {
@@ -1189,26 +1211,29 @@ body {
 }
 
 .testimonials-btn {
-    background: #06C167 !important;
-    border: none !important;
-    color: white !important;
+    background: linear-gradient(135deg, #06C167 0%, #05a85a 100%) !important;
+    border: 3px solid #ffffff !important;
+    color: #ffffff !important;
     padding: 15px 35px !important;
     border-radius: 30px !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     font-size: 1.1rem !important;
     transition: all 0.3s ease !important;
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 8px 25px rgba(6, 193, 103, 0.4) !important;
 }
 
 .testimonials-btn:hover {
-    background: #05a85a !important;
+    background: linear-gradient(135deg, #05a85a 0%, #048a4a 100%) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(6, 193, 103, 0.3) !important;
-    color: white !important;
+    box-shadow: 0 12px 30px rgba(6, 193, 103, 0.5) !important;
+    color: #ffffff !important;
     text-decoration: none !important;
+    border-color: #ffffff !important;
 }
 
 /* Responsive Design for Testimonials */
@@ -1632,19 +1657,27 @@ body {
 }
 
 .read-more-btn {
-    color: #06C167;
+    color: #0066cc;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
     margin-top: auto;
+    background: linear-gradient(135deg, #06C167 0%, #05a85a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .read-more-btn:hover {
-    color: #05a85a;
+    color: #004499;
     transform: translateX(5px);
+    background: linear-gradient(135deg, #004499 0%, #003366 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Load More Button */
@@ -2126,18 +2159,26 @@ body {
 }
 
 .read-more-link {
-    color: #06C167;
+    color: #0066cc;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
+    background: linear-gradient(135deg, #06C167 0%, #05a85a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .read-more-link:hover {
-    color: #05a85a;
+    color: #004499;
     transform: translateX(5px);
+    background: linear-gradient(135deg, #004499 0%, #003366 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Responsive Design for Blog Pages */
@@ -3600,6 +3641,19 @@ body {
 
 .home-tours .tour-card .tour-content {
     width: 100%;
+}
+
+/* ===== ACCESSIBILITY STYLES ===== */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
 /* ===== FOOTER STYLES ===== */

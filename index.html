@@ -67,16 +67,70 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
-    rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="./assets/home-page-banner.jpg" as="image">
+  <link rel="preload" href="./assets/back-video2.mp4" as="video">
+  
+  <!-- Preload critical font files -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v23/pxiEyp8kv8JHgFVrJJfecg.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Critical CSS inline - only above-the-fold content -->
+  <style>
+    /* Critical above-the-fold styles only */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; overflow-x: hidden; height: 100vh; position: relative; }
+    .navbar { background: #142328 !important; padding: 1rem 0; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+    .navbar-brand { color: white !important; font-size: 1.8rem; font-weight: 700; font-family: 'Poppins', sans-serif; text-decoration: none; }
+    .navbar-nav .nav-link { color: white !important; font-weight: 500; font-size: 1rem; margin: 0 1rem; transition: color 0.3s ease; position: relative; text-decoration: none; }
+    .navbar-nav .nav-link:hover { color: #06C167 !important; }
+    .video-background { position: fixed; top: 0; left: 0; width: 100%; height: 75vh; z-index: -1; overflow: hidden; background-image: url('./assets/home-page-banner.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .video-background video { min-width: 100%; min-height: 100%; width: auto; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
+    .video-background video.loaded { opacity: 1; }
+    .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(20, 35, 40, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%); }
+    .content { position: relative; z-index: 10; text-align: center; padding: 8rem 2rem 4rem; color: white; }
+    .hero-title { font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+    .subtitle { font-size: 1.3rem; margin-bottom: 2.5rem; font-weight: 400; line-height: 1.6; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
+    .cta-button { background: linear-gradient(135deg, #06C167 0%, #05a85a 100%); color: #ffffff; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 1.2rem; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; display: inline-block; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(6, 193, 103, 0.4); border: 3px solid #ffffff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+    .cta-button:hover { background: linear-gradient(135deg, #05a85a 0%, #048a4a 100%); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(6, 193, 103, 0.5); color: #ffffff; text-decoration: none; border-color: #ffffff; }
+    .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+  </style>
+  
+  <!-- Defer non-critical CSS to load after page render -->
+  <script>
+    // Load non-critical CSS after page load
+    function loadCSS(href, media = 'all') {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.media = media;
+      document.head.appendChild(link);
+    }
+    
+    // Load CSS after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load Bootstrap only for components that need it
+      loadCSS('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+      
+      // Load Font Awesome only for icons that are used
+      loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+      
+      // Load main stylesheet
+      loadCSS('styles.css');
+    });
+  </script>
+  
+  <!-- Fallback for browsers that don't support JavaScript -->
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </noscript>
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -210,7 +264,7 @@
     </div>
   </nav>
   <div style="background-color: red">
-    <div class="video-background" style="background-color: black">
+    <div class="video-background" style="background-image: url('./assets/home-page-banner.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
       <video id="background-video" autoplay muted loop playsinline>
         <source src="./assets/back-video2.mp4" type="video/mp4" />
         <!-- https://youtu.be/sprotb7pjOE -->
@@ -348,7 +402,10 @@
       <div class="tours-container">
         <div class="tour-card">
           <div class="tour-image">
-            <img src="./assets/hotel.jpg" alt="Luxury Sri Lanka Holidays - 5 Star Beach Resorts" />
+            <picture>
+              <source srcset="./assets/hotel.webp" type="image/webp">
+              <img src="./assets/hotel.jpg" alt="Luxury Sri Lanka Holidays - 5 Star Beach Resorts" width="354" height="236" loading="lazy" />
+            </picture>
           </div>
           <div class="tour-content">
             <h3 class="tour-title">Luxury Sri Lanka Holidays - 5 Star Beach Resorts</h3>
@@ -540,9 +597,12 @@
   <script>
     // Add smooth scrolling for the CTA button
 
-    // Add some interactive effects
+    // Add some interactive effects with optimized animations
     document.addEventListener("DOMContentLoaded", function () {
       const content = document.querySelector(".content");
+      if (content) {
+        // Use requestAnimationFrame to avoid forced reflows
+        requestAnimationFrame(() => {
       content.style.opacity = "0";
       content.style.transform = "translateY(30px)";
 
@@ -551,10 +611,19 @@
         content.style.opacity = "1";
         content.style.transform = "translateY(0)";
       }, 300);
+        });
+      }
     });
 
-    // Mouse movement animation for hero section
+    // Optimized mouse movement animation with throttling
+    let mouseMoveTimeout;
     document.addEventListener("mousemove", function (e) {
+      // Throttle mouse movement to reduce reflows
+      if (mouseMoveTimeout) {
+        return;
+      }
+      
+      mouseMoveTimeout = setTimeout(() => {
       const content = document.querySelector(".content");
       if (content) {
         const mouseX = e.clientX / window.innerWidth;
@@ -564,9 +633,13 @@
         const moveX = (mouseX - 0.5) * 20; // Max 20px movement
         const moveY = (mouseY - 0.5) * 15; // Max 15px movement
 
-        // Apply transform with smooth transition
+          // Use requestAnimationFrame to batch DOM updates
+          requestAnimationFrame(() => {
         content.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
       }
+        mouseMoveTimeout = null;
+      }, 16); // ~60fps throttling
     });
 
     // Count up animation for analytics
@@ -622,13 +695,19 @@
       }
     });
 
-    // Testimonials Carousel
+    // Testimonials Carousel (only initialize if elements exist)
     let currentTestimonialIndex = 0;
     const totalTestimonials = 5;
 
     function showTestimonial(index) {
       const cards = document.querySelectorAll(".testimonial-card");
       const dots = document.querySelectorAll(".dot");
+
+      // Check if elements exist before proceeding
+      if (cards.length === 0 || dots.length === 0) {
+        console.log("Testimonial carousel elements not found, skipping initialization");
+        return;
+      }
 
       // Hide all cards
       cards.forEach((card) => {
@@ -640,9 +719,11 @@
         dot.classList.remove("active");
       });
 
-      // Show current card and activate current dot
+      // Show current card and activate current dot (with bounds checking)
+      if (cards[index] && dots[index]) {
       cards[index].classList.add("active");
       dots[index].classList.add("active");
+      }
 
       currentTestimonialIndex = index;
     }
@@ -660,6 +741,13 @@
 
     function initTestimonialsCarousel() {
       const dots = document.querySelectorAll(".dot");
+      const cards = document.querySelectorAll(".testimonial-card");
+
+      // Only initialize if both dots and cards exist
+      if (dots.length === 0 || cards.length === 0) {
+        console.log("Testimonial carousel elements not found, skipping initialization");
+        return;
+      }
 
       // Click functionality for dots
       dots.forEach((dot, index) => {
@@ -688,23 +776,32 @@
         <div class="row">
           <div class="col-12 col-lg-4">
             <div class="footer-section">
-              <h4>DM Tours Sri Lanka</h4>
+              <h3>DM Tours Sri Lanka</h3>
               <p>
                 Your trusted partner for authentic Sri Lanka experiences. We
                 specialize in crafting unforgettable journeys that showcase
                 the true essence of this beautiful island nation.
               </p>
               <div class="footer-social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/dmtourslanka" target="_blank" rel="noopener noreferrer" aria-label="Follow DM Tours Sri Lanka on Facebook">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                  <span class="sr-only">Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/dmtourslanka" target="_blank" rel="noopener noreferrer" aria-label="Follow DM Tours Sri Lanka on Instagram">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                  <span class="sr-only">Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/dmtourslanka" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to DM Tours Sri Lanka on YouTube">
+                  <i class="fab fa-youtube" aria-hidden="true"></i>
+                  <span class="sr-only">YouTube</span>
+                </a>
               </div>
             </div>
           </div>
           <div class="col-12 col-lg-2"></div>
           <div class="col-12 col-lg-3">
             <div class="footer-section">
-              <h4>Quick Links</h4>
+              <h3>Quick Links</h3>
               <ul class="footer-links">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About Us</a></li>
@@ -716,7 +813,7 @@
           </div>
           <div class="col-12 col-lg-3">
             <div class="footer-section">
-              <h4>Contact Info</h4>
+              <h3>Contact Info</h3>
               <ul class="footer-contact-info">
                 <li>
                   <i class="fas fa-map-marker-alt"></i> 123 Galle Road,
@@ -756,12 +853,26 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Defer Bootstrap JS to load after critical content -->
+  <script>
+    // Load Bootstrap JS after page load
+    function loadJS(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      if (callback) script.onload = callback;
+      document.head.appendChild(script);
+    }
+    
+    // Load Bootstrap JS after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      loadJS('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js');
+    });
+  </script>
 
   <!-- Video Background Script -->
   <script>
-    // Ensure video is muted and looping
+    // Ensure video is muted and looping with smooth transition from background image
     document.addEventListener("DOMContentLoaded", function () {
       const video = document.getElementById("background-video");
 
@@ -781,6 +892,11 @@
           video.loop = true;
         });
 
+        video.addEventListener("canplay", function () {
+          // Add loaded class for smooth transition from background image to video
+          video.classList.add("loaded");
+        });
+
         video.addEventListener("play", function () {
           video.muted = true;
         });
@@ -796,6 +912,12 @@
         video.addEventListener("ended", function () {
           video.currentTime = 0;
           video.play();
+        });
+
+        // Fallback: if video fails to load, ensure background image is visible
+        video.addEventListener("error", function () {
+          console.log("Video failed to load, showing background image");
+          video.style.display = "none";
         });
       }
     });
