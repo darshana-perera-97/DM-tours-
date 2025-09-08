@@ -1,595 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      DM Tours Sri Lanka - Your Ultimate Gateway to Authentic Sri Lanka
-      Experiences!
-    </title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
 
-  <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="./index.html">DM Tours</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DM Tours Sri Lanka - #1 Tour Operator | Best Sri Lanka Travel Packages 2025</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="DM Tours Sri Lanka - Leading tour operator offering authentic Sri Lanka travel experiences. Luxury holidays, cultural tours, wildlife safaris, adventure travel. 5000+ happy travelers, 25+ years experience. Book your dream Sri Lanka vacation today!" />
+  <meta name="keywords" content="DM Tours, Sri Lanka tours, Sri Lanka travel packages, luxury Sri Lanka holidays, cultural tours Sri Lanka, wildlife safari Sri Lanka, adventure travel Sri Lanka, best tour operator Sri Lanka, authentic Sri Lanka experiences" />
+  <meta name="author" content="DM Tours Sri Lanka" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://dmtours.lk/" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DM Tours Sri Lanka - #1 Tour Operator | Best Sri Lanka Travel Packages 2025" />
+  <meta property="og:description" content="Leading tour operator offering authentic Sri Lanka travel experiences. Luxury holidays, cultural tours, wildlife safaris, adventure travel. 5000+ happy travelers, 25+ years experience." />
+  <meta property="og:url" content="https://dmtours.lk/" />
+  <meta property="og:site_name" content="DM Tours Sri Lanka" />
+  <meta property="og:image" content="https://dmtours.lk/assets/sri-lanka-banner.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="DM Tours Sri Lanka - Authentic Travel Experiences" />
+  <meta property="og:locale" content="en_US" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DM Tours Sri Lanka - #1 Tour Operator | Best Sri Lanka Travel Packages 2025" />
+  <meta name="twitter:description" content="Leading tour operator offering authentic Sri Lanka travel experiences. Luxury holidays, cultural tours, wildlife safaris, adventure travel. 5000+ happy travelers, 25+ years experience." />
+  <meta name="twitter:image" content="https://dmtours.lk/assets/sri-lanka-banner.jpg" />
+  <meta name="twitter:image:alt" content="DM Tours Sri Lanka - Authentic Travel Experiences" />
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="geo.region" content="LK" />
+  <meta name="geo.placename" content="Sri Lanka" />
+  <meta name="geo.position" content="7.8731;80.7718" />
+  <meta name="ICBM" content="7.8731, 80.7718" />
+  <meta name="DC.title" content="DM Tours Sri Lanka - #1 Tour Operator" />
+  <meta name="DC.creator" content="DM Tours Sri Lanka" />
+  <meta name="DC.subject" content="Sri Lanka Tours, Travel Packages, Cultural Tours, Wildlife Safaris" />
+  <meta name="DC.description" content="Leading tour operator offering authentic Sri Lanka travel experiences" />
+  <meta name="DC.publisher" content="DM Tours Sri Lanka" />
+  <meta name="DC.contributor" content="DM Tours Sri Lanka" />
+  <meta name="DC.date" content="2025-01-27" />
+  <meta name="DC.type" content="Text" />
+  <meta name="DC.format" content="text/html" />
+  <meta name="DC.identifier" content="https://dmtours.lk/" />
+  <meta name="DC.language" content="en" />
+  <meta name="DC.coverage" content="Sri Lanka" />
+  <meta name="DC.rights" content="© 2025 DM Tours Sri Lanka. All rights reserved." />
+  
+  <!-- Mobile App Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DM Tours Sri Lanka" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "DM Tours Sri Lanka",
+    "alternateName": "DM Tours",
+    "description": "Leading tour operator offering authentic Sri Lanka travel experiences. Luxury holidays, cultural tours, wildlife safaris, adventure travel.",
+    "url": "https://dmtours.lk",
+    "logo": "https://dmtours.lk/assets/sri-lanka-banner.jpg",
+    "image": "https://dmtours.lk/assets/sri-lanka-banner.jpg",
+    "telephone": "+94 11 234 5678",
+    "email": "info@dmtours.lk",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Galle Road",
+      "addressLocality": "Colombo 03",
+      "addressCountry": "LK",
+      "postalCode": "00300"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "6.9271",
+      "longitude": "79.8612"
+    },
+    "openingHours": "Mo-Fr 08:00-18:00",
+    "foundingDate": "2010",
+    "numberOfEmployees": "25-50",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Sri Lanka"
+    },
+    "serviceType": [
+      "Cultural Tours",
+      "Wildlife Safaris", 
+      "Adventure Travel",
+      "Luxury Holidays",
+      "Custom Tours"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Sri Lanka Tour Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "TouristTrip",
+            "name": "Cultural Heritage Tour",
+            "description": "Immerse yourself in Sri Lanka's rich cultural heritage. Visit ancient temples, explore the sacred city of Kandy with its Temple of the Tooth, climb the iconic Sigiriya Rock Fortress."
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "TouristTrip",
+            "name": "Wildlife Safari Adventure",
+            "description": "Embark on an unforgettable wildlife adventure through Sri Lanka's most spectacular national parks. Spot leopards, elephants, and exotic birds."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "TouristTrip", 
+            "name": "Beach & Luxury Escape",
+            "description": "Relax and rejuvenate on Sri Lanka's pristine beaches. Stay in luxury beachfront resorts, explore the historic Galle Fort."
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "5000",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "sameAs": [
+      "https://www.facebook.com/dmtourslanka",
+      "https://www.instagram.com/dmtourslanka", 
+      "https://www.youtube.com/dmtourslanka"
+    ]
+  }
+  </script>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="./index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./blogs.html">Blogs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./tours.html">Tours</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./testimonials.html">Testimonials</a>
-            </li>
-          </ul>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J1CJNL2JC3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-          <div class="navbar-nav">
-            <a class="nav-link btn btn-primary" href="./contact.html"
-              >Contact Us</a
-            >
-          </div>
+    gtag('config', 'G-J1CJNL2JC3');
+  </script>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">DM Tours</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./blogs.html">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./tours.html">Tours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./testimonials.html">Testimonials</a>
+          </li>
+        </ul>
+
+        <div class="navbar-nav">
+          <a class="nav-link btn btn-primary" href="./contact.html">Contact Us</a>
         </div>
       </div>
-    </nav>
-    <div style="background-color: red">
-      <div class="video-background" style="background-color: black">
-        <video id="background-video" autoplay muted loop playsinline>
-          <source src="./assets/back-video2.mp4" type="video/mp4" />
-          <!-- https://youtu.be/sprotb7pjOE -->
-          <!-- <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    </div>
+  </nav>
+  <div style="background-color: red">
+    <div class="video-background" style="background-color: black">
+      <video id="background-video" autoplay muted loop playsinline>
+        <source src="./assets/back-video2.mp4" type="video/mp4" />
+        <!-- https://youtu.be/sprotb7pjOE -->
+        <!-- <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                 type="video/mp4"> -->
-          <!-- Fallback for browsers that don't support video -->
-          <div
-            style="
+        <!-- Fallback for browsers that don't support video -->
+        <div style="
               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
               width: 100%;
               height: 100%;
-            "
-          ></div>
-        </video>
-        <div class="video-overlay"></div>
+            "></div>
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 class="hero-title">Welcome to DM Tours Sri Lanka - #1 Tour Operator</h1>
+    <p class="subtitle">
+      Your Ultimate Gateway to Authentic Sri Lanka Experiences! Discover luxury holidays, cultural tours, wildlife safaris, and adventure travel packages designed for unforgettable memories.
+    </p>
+    <a href="./contact.html" class="cta-button">Book Your Dream Sri Lanka Tour Today</a>
+  </div>
+
+  <!-- Animated Line -->
+  <div class="animated-line">
+    <div class="line-segment green"></div>
+    <div class="line-segment dark"></div>
+    <div class="line-segment green"></div>
+    <div class="line-segment dark"></div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 style="display: none;">About DM Tours Sri Lanka - Leading Tour Operator</h2>
+        <p>
+          Discover the magic of Sri Lanka with <strong>DM Tours</strong>, the #1 tour operator specializing in crafting the best tours in Sri Lanka designed especially for international travelers seeking unforgettable adventures. Whether you're dreaming of luxury Sri Lanka holidays, authentic cultural tours, wildlife safaris, or adventure travel experiences, we have the perfect travel packages for you. With over 25 years of experience and 5000+ satisfied customers, DM Tours Sri Lanka is your trusted partner for authentic Sri Lanka experiences.
+        </p>
       </div>
     </div>
+  </section>
 
-    <div class="content">
-      <h1 class="hero-title">Welcome to DM Tours Sri Lanka</h1>
-      <p class="subtitle">
-        Your Ultimate Gateway to Authentic Sri Lanka Experiences!
-      </p>
-      <a href="./contact.html" class="cta-button">Contact Now</a>
-    </div>
-
-    <!-- Animated Line -->
-    <div class="animated-line">
-      <div class="line-segment green"></div>
-      <div class="line-segment dark"></div>
-      <div class="line-segment green"></div>
-      <div class="line-segment dark"></div>
-    </div>
-
-    <!-- About Section -->
-    <section class="about-section">
-      <div class="container">
-        <div class="about-content">
-          <p>
-            Discover the magic of Sri Lanka with DM Tours, where we specialize
-            in crafting the best tours in Sri Lanka designed especially for
-            foreigners seeking unforgettable adventures. Whether you're dreaming
-            of luxury Sri Lanka holidays or authentic cultural tours, we have
-            the perfect travel packages for you.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-section">
-      <div class="container">
-        <h2 class="section-title">Why Choose DM Tours Sri Lanka?</h2>
-        <div class="cards-container">
-          <div class="card">
-            <div class="card-icon">
-              <i class="fas fa-map-marked-alt"></i>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">
-                Expertly Curated Sri Lanka Travel Packages
-              </h3>
-              <p class="card-text">
-                From luxury holidays to adventure travel, every itinerary
-                captures the diverse charm of Sri Lanka.
-              </p>
-            </div>
+  <!-- Why Choose Us Section -->
+  <section class="why-choose-section">
+    <div class="container">
+      <h2 class="section-title">Why Choose DM Tours Sri Lanka?</h2>
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-map-marked-alt"></i>
           </div>
-
-          <div class="card">
-            <div class="card-icon">
-              <i class="fas fa-camera"></i>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Authentic Sri Lanka Experiences</h3>
-              <p class="card-text">
-                Immerse yourself in rich culture, stunning wildlife safaris, and
-                breathtaking scenery.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">
-                Tailored Sri Lanka Tours for Foreigners
-              </h3>
-              <p class="card-text">
-                Customizable adventures that fit your interests and pace.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">
-              <i class="fas fa-headset"></i>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">24/7 Worldwide Customer Support</h3>
-              <p class="card-text">
-                Seamless travel planning for global travelers.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Analytics Section -->
-    <section class="analytics-section">
-      <div class="container">
-        <div class="analytics-box">
-          <div class="analytics-item">
-            <div class="analytics-number">5000+</div>
-            <div class="analytics-label">Happy Travelers</div>
-          </div>
-          <div class="analytics-item">
-            <div class="analytics-number">150+</div>
-            <div class="analytics-label">Tour Packages</div>
-          </div>
-          <div class="analytics-item">
-            <div class="analytics-number">25+</div>
-            <div class="analytics-label">Years Experience</div>
-          </div>
-          <div class="analytics-item">
-            <div class="analytics-number">98%</div>
-            <div class="analytics-label">Satisfaction Rate</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Popular Tours Section -->
-    <section class="popular-tours-section">
-      <div class="container home-tours">
-        <h2 class="section-title">Explore Our Popular Sri Lanka Tours</h2>
-        <div class="tours-container">
-          <div class="tour-card">
-            <div class="tour-image">
-              <img src="./assets/hotel.jpg" alt="Luxury Sri Lanka Holidays" />
-            </div>
-            <div class="tour-content">
-              <h3 class="tour-title">Luxury Sri Lanka Holidays</h3>
-              <p class="tour-description">
-                Indulge in pristine beaches, upscale resorts, and exclusive
-                experiences.
-              </p>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-image">
-              <img src="./assets/sigiriya.jpg" alt="Sri Lanka Cultural Tours" />
-            </div>
-            <div class="tour-content">
-              <h3 class="tour-title">Sri Lanka Cultural Tours</h3>
-              <p class="tour-description">
-                Discover heritage sites, traditional arts, and vibrant
-                festivals.
-              </p>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-image">
-              <img
-                src="./assets/wild.jpg"
-                alt="Sri Lanka Wildlife Safari Tours"
-              />
-            </div>
-            <div class="tour-content">
-              <h3 class="tour-title">Sri Lanka Wildlife Safari Tours</h3>
-              <p class="tour-description">
-                Witness exotic wildlife in world-renowned national parks.
-              </p>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-
-          <div class="tour-card">
-            <div class="tour-image">
-              <img
-                src="./assets/adventure.jpg"
-                alt="Sri Lanka Adventure Travel"
-              />
-            </div>
-            <div class="tour-content">
-              <h3 class="tour-title">Sri Lanka Adventure Travel</h3>
-              <p class="tour-description">
-                Trek mountains, explore rainforests, and experience thrilling
-                outdoor activities.
-              </p>
-              <a href="#" class="read-more">Read More →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Banner Section -->
-    <section class="banner-section">
-      <div class="banner-overlay"></div>
-      <div class="container">
-        <div class="banner-layout">
-          <div class="banner-content">
-            <h2 class="banner-title">
-              Start Planning Your Sri Lanka Dream Vacation Today!
-            </h2>
-            <p class="banner-description">
-              Join thousands of global travelers who trust DM Tours Sri Lanka
-              for authentic, memorable experiences. Contact us now to explore
-              our best tours in Sri Lanka and take advantage of our exclusive
-              Sri Lanka holiday deals.
+          <div class="card-content">
+            <h3 class="card-title">
+              Expertly Curated Sri Lanka Travel Packages
+            </h3>
+            <p class="card-text">
+              From luxury holidays to adventure travel, every itinerary
+              captures the diverse charm of Sri Lanka.
             </p>
-            <div class="banner-tagline">
-              DM Tours Sri Lanka – Discover Authenticity, Experience Luxury,
-              Embrace Adventure!
-            </div>
-            <a href="./contact.html" class="banner-cta">Contact Us Now</a>
           </div>
-          <div class="banner-image">
-            <img
-              src="./assets/travel-p.png"
-              alt="Sri Lanka Tourism Illustration"
-            />
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Authentic Sri Lanka Experiences</h3>
+            <p class="card-text">
+              Immerse yourself in rich culture, stunning wildlife safaris, and
+              breathtaking scenery.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">
+              Tailored Sri Lanka Tours for Foreigners
+            </h3>
+            <p class="card-text">
+              Customizable adventures that fit your interests and pace.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">24/7 Worldwide Customer Support</h3>
+            <p class="card-text">
+              Seamless travel planning for global travelers.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-      <div class="testimonials-bg"></div>
-      <div class="container">
-        <div class="section-header text-center mb-5">
-          <h2 class="section-title">What Our Customers Say</h2>
-          <p class="section-subtitle">
-            Real experiences from travelers who chose DM Tours Sri Lanka
+  <!-- Analytics Section -->
+  <section class="analytics-section">
+    <div class="container">
+      <div class="analytics-box">
+        <div class="analytics-item">
+          <div class="analytics-number">5000+</div>
+          <div class="analytics-label">Happy Travelers</div>
+        </div>
+        <div class="analytics-item">
+          <div class="analytics-number">150+</div>
+          <div class="analytics-label">Tour Packages</div>
+        </div>
+        <div class="analytics-item">
+          <div class="analytics-number">25+</div>
+          <div class="analytics-label">Years Experience</div>
+        </div>
+        <div class="analytics-item">
+          <div class="analytics-number">98%</div>
+          <div class="analytics-label">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Tours Section -->
+  <section class="popular-tours-section">
+    <div class="container home-tours">
+      <h2 class="section-title">Explore Our Popular Sri Lanka Tours</h2>
+      <div class="tours-container">
+        <div class="tour-card">
+          <div class="tour-image">
+            <img src="./assets/hotel.jpg" alt="Luxury Sri Lanka Holidays - 5 Star Beach Resorts" />
+          </div>
+          <div class="tour-content">
+            <h3 class="tour-title">Luxury Sri Lanka Holidays - 5 Star Beach Resorts</h3>
+            <p class="tour-description">
+              Indulge in pristine beaches, upscale resorts, and exclusive luxury experiences. Perfect for honeymooners and luxury travelers seeking the finest Sri Lanka holiday packages.
+            </p>
+            <a href="./tours.html" class="read-more">Book Luxury Tour →</a>
+          </div>
+        </div>
+
+        <div class="tour-card">
+          <div class="tour-image">
+            <img src="./assets/sigiriya.jpg" alt="Sri Lanka Cultural Tours - Sigiriya, Kandy, Anuradhapura" />
+          </div>
+          <div class="tour-content">
+            <h3 class="tour-title">Sri Lanka Cultural Tours - UNESCO Heritage Sites</h3>
+            <p class="tour-description">
+              Discover UNESCO World Heritage sites including Sigiriya Rock Fortress, Temple of the Tooth in Kandy, and ancient Anuradhapura ruins. Experience traditional arts, vibrant festivals, and authentic Sri Lankan culture.
+            </p>
+            <a href="./tours.html" class="read-more">Book Cultural Tour →</a>
+          </div>
+        </div>
+
+        <div class="tour-card">
+          <div class="tour-image">
+            <img src="./assets/wild.jpg" alt="Sri Lanka Wildlife Safari Tours - Yala, Udawalawe, Sinharaja" />
+          </div>
+          <div class="tour-content">
+            <h3 class="tour-title">Sri Lanka Wildlife Safari Tours - Yala & Udawalawe</h3>
+            <p class="tour-description">
+              Witness exotic wildlife including leopards, elephants, and rare birds in world-renowned national parks like Yala, Udawalawe, and Sinharaja Forest Reserve. Experience thrilling jeep safaris and whale watching.
+            </p>
+            <a href="./tours.html" class="read-more">Book Safari Tour →</a>
+          </div>
+        </div>
+
+        <div class="tour-card">
+          <div class="tour-image">
+            <img src="./assets/adventure.jpg" alt="Sri Lanka Adventure Travel - Hiking, Trekking, Water Sports" />
+          </div>
+          <div class="tour-content">
+            <h3 class="tour-title">Sri Lanka Adventure Travel - Hiking & Water Sports</h3>
+            <p class="tour-description">
+              Trek mountains, explore rainforests, climb Adam's Peak, hike Horton Plains, and experience thrilling outdoor activities including white water rafting, surfing, and mountain biking in Sri Lanka's hill country.
+            </p>
+            <a href="./tours.html" class="read-more">Book Adventure Tour →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Section -->
+  <section class="banner-section">
+    <div class="banner-overlay"></div>
+    <div class="container">
+      <div class="banner-layout">
+        <div class="banner-content">
+          <h2 class="banner-title">
+            Start Planning Your Sri Lanka Dream Vacation Today!
+          </h2>
+          <p class="banner-description">
+            Join thousands of global travelers who trust DM Tours Sri Lanka
+            for authentic, memorable experiences. Contact us now to explore
+            our best tours in Sri Lanka and take advantage of our exclusive
+            Sri Lanka holiday deals.
           </p>
-          <a
-            href="./testimonials.html"
-            class="btn btn-primary btn-lg testimonials-btn mt-5"
-          >
-            <i class="fas fa-comments me-2"></i>
-            Read All Testimonials
-          </a>
+          <div class="banner-tagline">
+            DM Tours Sri Lanka – Discover Authenticity, Experience Luxury,
+            Embrace Adventure!
+          </div>
+          <a href="./contact.html" class="banner-cta">Contact Us Now</a>
+        </div>
+        <div class="banner-image">
+          <img src="./assets/travel-p.png" alt="Sri Lanka Tourism Illustration" />
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <script>
-      // Add smooth scrolling for the CTA button
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-bg"></div>
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">
+          Real experiences from travelers who chose DM Tours Sri Lanka
+        </p>
+        <a href="./testimonials.html" class="btn btn-primary btn-lg testimonials-btn mt-5">
+          <i class="fas fa-comments me-2"></i>
+          Read All Testimonials
+        </a>
+      </div>
+    </div>
+  </section>
 
-      // Add some interactive effects
-      document.addEventListener("DOMContentLoaded", function () {
-        const content = document.querySelector(".content");
-        content.style.opacity = "0";
-        content.style.transform = "translateY(30px)";
-
-        setTimeout(() => {
-          content.style.transition = "all 1s ease";
-          content.style.opacity = "1";
-          content.style.transform = "translateY(0)";
-        }, 300);
-      });
-
-      // Mouse movement animation for hero section
-      document.addEventListener("mousemove", function (e) {
-        const content = document.querySelector(".content");
-        if (content) {
-          const mouseX = e.clientX / window.innerWidth;
-          const mouseY = e.clientY / window.innerHeight;
-
-          // Calculate movement (subtle effect)
-          const moveX = (mouseX - 0.5) * 20; // Max 20px movement
-          const moveY = (mouseY - 0.5) * 15; // Max 15px movement
-
-          // Apply transform with smooth transition
-          content.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        }
-      });
-
-      // Count up animation for analytics
-      function animateCountUp(element, target, duration = 2000) {
-        let start = 0;
-        const increment = target / (duration / 16);
-
-        function updateCount() {
-          start += increment;
-          if (start < target) {
-            element.textContent =
-              Math.floor(start) +
-              (element.textContent.includes("+") ? "+" : "") +
-              (element.textContent.includes("%") ? "%" : "");
-            requestAnimationFrame(updateCount);
-          } else {
-            element.textContent =
-              target +
-              (element.textContent.includes("+") ? "+" : "") +
-              (element.textContent.includes("%") ? "%" : "");
-          }
-        }
-
-        updateCount();
-      }
-
-      // Intersection Observer for analytics animation
-      const observerOptions = {
-        threshold: 0.5,
-        rootMargin: "0px 0px -100px 0px",
-      };
-
-      const analyticsObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const numbers = entry.target.querySelectorAll(".analytics-number");
-            numbers.forEach((number, index) => {
-              setTimeout(() => {
-                const target = parseInt(number.textContent.replace(/\D/g, ""));
-                animateCountUp(number, target, 2000);
-              }, index * 300);
-            });
-            analyticsObserver.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      // Observe analytics section
-      document.addEventListener("DOMContentLoaded", function () {
-        const analyticsSection = document.querySelector(".analytics-box");
-        if (analyticsSection) {
-          analyticsObserver.observe(analyticsSection);
-        }
-      });
-
-      // Testimonials Carousel
-      let currentTestimonialIndex = 0;
-      const totalTestimonials = 5;
-
-      function showTestimonial(index) {
-        const cards = document.querySelectorAll(".testimonial-card");
-        const dots = document.querySelectorAll(".dot");
-
-        // Hide all cards
-        cards.forEach((card) => {
-          card.classList.remove("active");
-        });
-
-        // Remove active class from all dots
-        dots.forEach((dot) => {
-          dot.classList.remove("active");
-        });
-
-        // Show current card and activate current dot
-        cards[index].classList.add("active");
-        dots[index].classList.add("active");
-
-        currentTestimonialIndex = index;
-      }
-
-      function nextTestimonial() {
-        const nextIndex = (currentTestimonialIndex + 1) % totalTestimonials;
-        showTestimonial(nextIndex);
-      }
-
-      function previousTestimonial() {
-        const prevIndex =
-          (currentTestimonialIndex - 1 + totalTestimonials) % totalTestimonials;
-        showTestimonial(prevIndex);
-      }
-
-      function initTestimonialsCarousel() {
-        const dots = document.querySelectorAll(".dot");
-
-        // Click functionality for dots
-        dots.forEach((dot, index) => {
-          dot.addEventListener("click", () => {
-            showTestimonial(index);
-          });
-        });
-
-        // Initialize first testimonial
-        showTestimonial(0);
-
-        // Auto-advance every 6 seconds
-        setInterval(nextTestimonial, 6000);
-      }
-
-      // Initialize testimonials carousel when DOM is loaded
-      document.addEventListener("DOMContentLoaded", function () {
-        initTestimonialsCarousel();
-      });
-    </script>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="row">
-            <div class="col-12 col-lg-4">
-              <div class="footer-section">
-                <h4>DM Tours Sri Lanka</h4>
-                <p>
-                  Your trusted partner for authentic Sri Lanka experiences. We
-                  specialize in crafting unforgettable journeys that showcase
-                  the true essence of this beautiful island nation.
-                </p>
-                <div class="footer-social-links">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+  <!-- FAQ Section for SEO -->
+  <section class="faq-section" style="padding: 80px 0; background-color: #f8f9fa;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title text-center mb-5">Frequently Asked Questions About DM Tours Sri Lanka</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-8 mx-auto">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faq1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
+                  aria-expanded="true" aria-controls="collapse1">
+                  Why choose DM Tours Sri Lanka for my vacation?
+                </button>
+              </h3>
+              <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <strong>DM Tours Sri Lanka</strong> is the #1 tour operator with 25+ years of experience, serving 5000+ happy travelers. We offer authentic Sri Lanka experiences, luxury holidays, cultural tours, wildlife safaris, and adventure travel packages. Our local expertise, personalized service, and 24/7 support make us the best choice for your Sri Lanka vacation.
                 </div>
               </div>
             </div>
-            <div class="col-12 col-lg-2"></div>
-            <div class="col-12 col-lg-3">
-              <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                  <li><a href="./index.html">Home</a></li>
-                  <li><a href="./about.html">About Us</a></li>
-                  <li><a href="./tours.html">Tours</a></li>
-                  <li><a href="./blogs.html">Blogs</a></li>
-                  <li><a href="./testimonials.html">Testimonials</a></li>
-                </ul>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faq2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                  What types of Sri Lanka tour packages do you offer?
+                </button>
+              </h3>
+              <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We offer comprehensive <strong>Sri Lanka tour packages</strong> including: Cultural Heritage Tours (Sigiriya, Kandy, Anuradhapura), Wildlife Safari Tours (Yala, Udawalawe, Sinharaja), Luxury Beach Holidays (Bentota, Galle, Unawatuna), Adventure Travel (Adam's Peak, Horton Plains, Ella), and Culinary & Cultural Journeys. All tours are customizable to your preferences.
+                </div>
               </div>
             </div>
-            <div class="col-12 col-lg-3">
-              <div class="footer-section">
-                <h4>Contact Info</h4>
-                <ul class="footer-contact-info">
-                  <li>
-                    <i class="fas fa-map-marker-alt"></i> 123 Galle Road,
-                    Colombo 03, Sri Lanka
-                  </li>
-                  <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
-                  <li><i class="fas fa-envelope"></i> info@dmtours.lk</li>
-                  <li>
-                    <i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM
-                  </li>
-                </ul>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faq3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                  How far in advance should I book my Sri Lanka tour?
+                </button>
+              </h3>
+              <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We recommend booking at least 2-3 months in advance for peak season (December to April) and 1-2 months for off-peak season. For custom tours or large groups, we suggest booking 4-6 months ahead. <strong>DM Tours Sri Lanka</strong> offers flexible booking options and last-minute availability.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faq4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                  What is included in your Sri Lanka tour prices?
+                </button>
+              </h3>
+              <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Our <strong>Sri Lanka tour packages</strong> typically include accommodation, transportation, professional guide services, entrance fees to attractions, and most meals. We offer luxury holidays, cultural tours, wildlife safaris, and adventure travel packages with transparent pricing. Flights, travel insurance, and personal expenses are not included unless specified.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faq5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                  Can I customize my Sri Lanka tour itinerary?
+                </button>
+              </h3>
+              <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Absolutely! <strong>DM Tours Sri Lanka</strong> specializes in creating personalized tours. You can modify existing packages or request completely custom itineraries based on your interests, budget, and travel style. Whether you want luxury holidays, cultural tours, wildlife safaris, or adventure travel, we'll create the perfect Sri Lanka experience for you.
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="footer-bottom-content">
-            <div class="footer-copyright">
-              © 2025 DM Tours Sri Lanka. All rights reserved.
-            </div>
-            <ul class="footer-bottom-links">
-              <li><a href="./contact.html">Privacy Policy</a></li>
-              <li><a href="./contact.html">Terms of Service</a></li>
-              <li><a href="./contact.html">Cookie Policy</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <script>
+    // Add smooth scrolling for the CTA button
 
-    <!-- Back to Top Button -->
-    <button class="footer-back-to-top" id="backToTop">
-      <i class="fas fa-chevron-up"></i>
-    </button>
+    // Add some interactive effects
+    document.addEventListener("DOMContentLoaded", function () {
+      const content = document.querySelector(".content");
+      content.style.opacity = "0";
+      content.style.transform = "translateY(30px)";
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      setTimeout(() => {
+        content.style.transition = "all 1s ease";
+        content.style.opacity = "1";
+        content.style.transform = "translateY(0)";
+      }, 300);
+    });
 
-    <!-- Video Background Script -->
-    <script>
-      // Ensure video is muted and looping
-      document.addEventListener("DOMContentLoaded", function () {
-        const video = document.getElementById("background-video");
+    // Mouse movement animation for hero section
+    document.addEventListener("mousemove", function (e) {
+      const content = document.querySelector(".content");
+      if (content) {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
 
-        if (video) {
-          // Force mute the video
-          video.muted = true;
+        // Calculate movement (subtle effect)
+        const moveX = (mouseX - 0.5) * 20; // Max 20px movement
+        const moveY = (mouseY - 0.5) * 15; // Max 15px movement
 
-          // Ensure loop is enabled
-          video.loop = true;
+        // Apply transform with smooth transition
+        content.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
+    });
 
-          // Ensure autoplay works
-          video.autoplay = true;
+    // Count up animation for analytics
+    function animateCountUp(element, target, duration = 2000) {
+      let start = 0;
+      const increment = target / (duration / 16);
 
-          // Add event listeners to handle video behavior
-          video.addEventListener("loadedmetadata", function () {
-            video.muted = true;
-            video.loop = true;
+      function updateCount() {
+        start += increment;
+        if (start < target) {
+          element.textContent =
+            Math.floor(start) +
+            (element.textContent.includes("+") ? "+" : "") +
+            (element.textContent.includes("%") ? "%" : "");
+          requestAnimationFrame(updateCount);
+        } else {
+          element.textContent =
+            target +
+            (element.textContent.includes("+") ? "+" : "") +
+            (element.textContent.includes("%") ? "%" : "");
+        }
+      }
+
+      updateCount();
+    }
+
+    // Intersection Observer for analytics animation
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: "0px 0px -100px 0px",
+    };
+
+    const analyticsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const numbers = entry.target.querySelectorAll(".analytics-number");
+          numbers.forEach((number, index) => {
+            setTimeout(() => {
+              const target = parseInt(number.textContent.replace(/\D/g, ""));
+              animateCountUp(number, target, 2000);
+            }, index * 300);
           });
-
-          video.addEventListener("play", function () {
-            video.muted = true;
-          });
-
-          // Handle any user interaction that might unmute the video
-          video.addEventListener("volumechange", function () {
-            if (!video.muted) {
-              video.muted = true;
-            }
-          });
-
-          // Ensure video restarts when it ends (for loop functionality)
-          video.addEventListener("ended", function () {
-            video.currentTime = 0;
-            video.play();
-          });
+          analyticsObserver.unobserve(entry.target);
         }
       });
-    </script>
-  </body>
+    }, observerOptions);
+
+    // Observe analytics section
+    document.addEventListener("DOMContentLoaded", function () {
+      const analyticsSection = document.querySelector(".analytics-box");
+      if (analyticsSection) {
+        analyticsObserver.observe(analyticsSection);
+      }
+    });
+
+    // Testimonials Carousel
+    let currentTestimonialIndex = 0;
+    const totalTestimonials = 5;
+
+    function showTestimonial(index) {
+      const cards = document.querySelectorAll(".testimonial-card");
+      const dots = document.querySelectorAll(".dot");
+
+      // Hide all cards
+      cards.forEach((card) => {
+        card.classList.remove("active");
+      });
+
+      // Remove active class from all dots
+      dots.forEach((dot) => {
+        dot.classList.remove("active");
+      });
+
+      // Show current card and activate current dot
+      cards[index].classList.add("active");
+      dots[index].classList.add("active");
+
+      currentTestimonialIndex = index;
+    }
+
+    function nextTestimonial() {
+      const nextIndex = (currentTestimonialIndex + 1) % totalTestimonials;
+      showTestimonial(nextIndex);
+    }
+
+    function previousTestimonial() {
+      const prevIndex =
+        (currentTestimonialIndex - 1 + totalTestimonials) % totalTestimonials;
+      showTestimonial(prevIndex);
+    }
+
+    function initTestimonialsCarousel() {
+      const dots = document.querySelectorAll(".dot");
+
+      // Click functionality for dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          showTestimonial(index);
+        });
+      });
+
+      // Initialize first testimonial
+      showTestimonial(0);
+
+      // Auto-advance every 6 seconds
+      setInterval(nextTestimonial, 6000);
+    }
+
+    // Initialize testimonials carousel when DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      initTestimonialsCarousel();
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="row">
+          <div class="col-12 col-lg-4">
+            <div class="footer-section">
+              <h4>DM Tours Sri Lanka</h4>
+              <p>
+                Your trusted partner for authentic Sri Lanka experiences. We
+                specialize in crafting unforgettable journeys that showcase
+                the true essence of this beautiful island nation.
+              </p>
+              <div class="footer-social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-2"></div>
+          <div class="col-12 col-lg-3">
+            <div class="footer-section">
+              <h4>Quick Links</h4>
+              <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./tours.html">Tours</a></li>
+                <li><a href="./blogs.html">Blogs</a></li>
+                <li><a href="./testimonials.html">Testimonials</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <ul class="footer-contact-info">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i> 123 Galle Road,
+                  Colombo 03, Sri Lanka
+                </li>
+                <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
+                <li><i class="fas fa-envelope"></i> info@dmtours.lk</li>
+                <li>
+                  <i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            © 2025 DM Tours Sri Lanka. All rights reserved.
+          </div>
+          <ul class="footer-bottom-links">
+            <li><a href="./contact.html">Privacy Policy</a></li>
+            <li><a href="./contact.html">Terms of Service</a></li>
+            <li><a href="./contact.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="footer-back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Video Background Script -->
+  <script>
+    // Ensure video is muted and looping
+    document.addEventListener("DOMContentLoaded", function () {
+      const video = document.getElementById("background-video");
+
+      if (video) {
+        // Force mute the video
+        video.muted = true;
+
+        // Ensure loop is enabled
+        video.loop = true;
+
+        // Ensure autoplay works
+        video.autoplay = true;
+
+        // Add event listeners to handle video behavior
+        video.addEventListener("loadedmetadata", function () {
+          video.muted = true;
+          video.loop = true;
+        });
+
+        video.addEventListener("play", function () {
+          video.muted = true;
+        });
+
+        // Handle any user interaction that might unmute the video
+        video.addEventListener("volumechange", function () {
+          if (!video.muted) {
+            video.muted = true;
+          }
+        });
+
+        // Ensure video restarts when it ends (for loop functionality)
+        video.addEventListener("ended", function () {
+          video.currentTime = 0;
+          video.play();
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>

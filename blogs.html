@@ -1,389 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs - DM Tours Sri Lanka</title>
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs - DM Tours Sri Lanka</title>
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="./index.html">DM Tours</a>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J1CJNL2JC3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="./index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="./blogs.html">Blogs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./tours.html">Tours</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./testimonials.html">Testimonials</a>
-            </li>
-          </ul>
+    gtag('config', 'G-J1CJNL2JC3');
+  </script>
+</head>
 
-          <div class="navbar-nav">
-            <a class="nav-link btn btn-primary" href="./contact.html"
-              >Contact Us</a
-            >
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">DM Tours</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./blogs.html">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./tours.html">Tours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./testimonials.html">Testimonials</a>
+          </li>
+        </ul>
+
+        <div class="navbar-nav">
+          <a class="nav-link btn btn-primary" href="./contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="blogs-hero">
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Discover Sri Lanka Through Our Stories</h1>
+        <p class="hero-subtitle">
+          Insights, tips, and adventures from our travel experts and local
+          guides
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Categories Section -->
+  <section class="blog-categories-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex justify-content-center py-4">
+            <a href="/blogs.html" class="all-blogs-btn">All blogs</a>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="categories-wrapper text-center">
+            <button class="category-btn active" data-category="all">
+              All Posts
+            </button>
+            <button class="category-btn" data-category="culture">
+              Culture
+            </button>
+            <button class="category-btn" data-category="adventure">
+              Adventure
+            </button>
+            <button class="category-btn" data-category="food">
+              Food & Cuisine
+            </button>
+            <button class="category-btn" data-category="wildlife">
+              Wildlife
+            </button>
+            <button class="category-btn" data-category="travel-tips">
+              Travel Tips
+            </button>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="blogs-hero">
-      <div class="hero-background"></div>
-      <div class="hero-overlay"></div>
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title">Discover Sri Lanka Through Our Stories</h1>
-          <p class="hero-subtitle">
-            Insights, tips, and adventures from our travel experts and local
-            guides
-          </p>
+  <!-- Blogs Section -->
+  <section class="blogs-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title text-center mb-5">
+            Latest Travel Stories & Insights
+          </h2>
         </div>
       </div>
-    </section>
 
-    <!-- Blog Categories Section -->
-    <section class="blog-categories-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="d-flex justify-content-center py-4">
-              <a href="/blogs.html" class="all-blogs-btn">All blogs</a>
+      <div class="row g-4">
+        <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="culture">
+          <a href="./blog-single.html" class="read-more-btn">
+            <div class="blog-card h-100">
+              <div class="blog-image">
+                <img src="./assets/adventure.jpg" alt="Temple of the Tooth Relic" class="img-fluid" />
+                <div class="blog-category">Culture</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 15, 2025</span>
+                  <span class="blog-author"><i class="fas fa-user"></i> By Sarah Johnson</span>
+                </div>
+                <h3 class="blog-title">
+                  The Sacred Temple of the Tooth Relic: A Spiritual Journey in
+                  Kandy
+                </h3>
+                <p class="blog-excerpt">
+                  Discover the spiritual heart of Sri Lanka at the Temple of
+                  the Tooth Relic in Kandy. This UNESCO World Heritage site
+                  houses one of Buddhism's most sacred relics and offers
+                  visitors a profound glimpse into the country's rich
+                  religious heritage.
+                </p>
+                <div class="blog-tags">
+                  <span class="tag">Kandy</span>
+                  <span class="tag">Buddhism</span>
+                  <span class="tag">UNESCO</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="categories-wrapper text-center">
-              <button class="category-btn active" data-category="all">
-                All Posts
-              </button>
-              <button class="category-btn" data-category="culture">
-                Culture
-              </button>
-              <button class="category-btn" data-category="adventure">
-                Adventure
-              </button>
-              <button class="category-btn" data-category="food">
-                Food & Cuisine
-              </button>
-              <button class="category-btn" data-category="wildlife">
-                Wildlife
-              </button>
-              <button class="category-btn" data-category="travel-tips">
-                Travel Tips
-              </button>
+          </a>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="adventure">
+          <a href="./blog-single.html" class="read-more-btn">
+            <div class="blog-card h-100">
+              <div class="blog-image">
+                <img src="./assets/home-page-banner.jpg" alt="Adam's Peak Sunrise" class="img-fluid" />
+                <div class="blog-category">Adventure</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 12, 2025</span>
+                  <span class="blog-author"><i class="fas fa-user"></i> By Mike Chen</span>
+                </div>
+                <h3 class="blog-title">
+                  Climbing Adam's Peak: A Sunrise Adventure You'll Never
+                  Forget
+                </h3>
+                <p class="blog-excerpt">
+                  Embark on the ultimate Sri Lankan adventure by climbing
+                  Adam's Peak at night to witness the breathtaking sunrise
+                  from the summit. This challenging yet rewarding trek offers
+                  spectacular views and a spiritual experience like no other.
+                </p>
+                <div class="blog-tags">
+                  <span class="tag">Adam's Peak</span>
+                  <span class="tag">Hiking</span>
+                  <span class="tag">Sunrise</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="food">
+          <a href="./blog-single.html" class="read-more-btn">
+            <div class="blog-card h-100">
+              <div class="blog-image">
+                <img src="./assets/hotel.jpg" alt="Sri Lankan Curry" class="img-fluid" />
+                <div class="blog-category">Food & Cuisine</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 10, 2025</span>
+                  <span class="blog-author"><i class="fas fa-user"></i> By Priya Patel</span>
+                </div>
+                <h3 class="blog-title">
+                  A Culinary Journey Through Sri Lanka: From Street Food to
+                  Fine Dining
+                </h3>
+                <p class="blog-excerpt">
+                  Explore the diverse and flavorful world of Sri Lankan
+                  cuisine. From spicy curries and fresh seafood to aromatic
+                  rice dishes and tropical fruits, discover why Sri Lanka is
+                  becoming a food lover's paradise.
+                </p>
+                <div class="blog-tags">
+                  <span class="tag">Cuisine</span>
+                  <span class="tag">Street Food</span>
+                  <span class="tag">Curry</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="wildlife">
+          <a href="./blog-single.html" class="read-more-btn">
+            <div class="blog-card h-100">
+              <div class="blog-image">
+                <img src="./assets/adventure.jpg" alt="Leopard in Yala" class="img-fluid" />
+                <div class="blog-category">Wildlife</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 8, 2025</span>
+                  <span class="blog-author"><i class="fas fa-user"></i> By David Wilson</span>
+                </div>
+                <h3 class="blog-title">
+                  Wildlife Safari in Yala National Park: Spotting Leopards and
+                  Elephants
+                </h3>
+                <p class="blog-excerpt">
+                  Experience the thrill of wildlife photography in Yala
+                  National Park, home to the highest density of leopards in
+                  the world. Learn the best times to visit and tips for
+                  capturing amazing wildlife moments.
+                </p>
+                <div class="blog-tags">
+                  <span class="tag">Yala</span>
+                  <span class="tag">Wildlife</span>
+                  <span class="tag">Safari</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="travel-tips">
+          <a href="./blog-single.html" class="read-more-btn">
+            <div class="blog-card h-100">
+              <div class="blog-image">
+                <img src="./assets/hotel.jpg" alt="Beach in Sri Lanka" class="img-fluid" />
+                <div class="blog-category">Travel Tips</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 5, 2025</span>
+                  <span class="blog-author"><i class="fas fa-user"></i> By Emma Thompson</span>
+                </div>
+                <h3 class="blog-title">
+                  Best Time to Visit Sri Lanka: Weather, Crowds, and Festivals
+                  Guide
+                </h3>
+                <p class="blog-excerpt">
+                  Plan your perfect Sri Lanka trip with our comprehensive
+                  guide to weather patterns, peak seasons, and cultural
+                  festivals. Find the ideal time to visit based on your
+                  interests and travel style.
+                </p>
+                <div class="blog-tags">
+                  <span class="tag">Travel Tips</span>
+                  <span class="tag">Weather</span>
+                  <span class="tag">Festivals</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="culture">
+          <a href="./blog-single.html" class="read-more-btn">
+            <div class="blog-card h-100">
+              <div class="blog-image">
+                <img src="./assets/wild.jpg" alt="Traditional Dance" class="img-fluid" />
+                <div class="blog-category">Culture</div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 3, 2025</span>
+                  <span class="blog-author"><i class="fas fa-user"></i> By Rajesh Kumar</span>
+                </div>
+                <h3 class="blog-title">
+                  Traditional Sri Lankan Dance: The Art of Kandyan and Low
+                  Country Styles
+                </h3>
+                <p class="blog-excerpt">
+                  Immerse yourself in the vibrant world of Sri Lankan
+                  traditional dance. Discover the history, costumes, and
+                  significance of Kandyan and Low Country dance forms that
+                  have been preserved for generations.
+                </p>
+                <div class="blog-tags">
+                  <span class="tag">Dance</span>
+                  <span class="tag">Tradition</span>
+                  <span class="tag">Kandyan</span>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Blogs Section -->
-    <section class="blogs-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="section-title text-center mb-5">
-              Latest Travel Stories & Insights
-            </h2>
-          </div>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="culture">
-            <a href="./blog-single.html" class="read-more-btn">
-              <div class="blog-card h-100">
-                <div class="blog-image">
-                  <img
-                    src="./assets/adventure.jpg"
-                    alt="Temple of the Tooth Relic"
-                    class="img-fluid"
-                  />
-                  <div class="blog-category">Culture</div>
-                </div>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <span class="blog-date"
-                      ><i class="fas fa-calendar-alt"></i> March 15, 2025</span
-                    >
-                    <span class="blog-author"
-                      ><i class="fas fa-user"></i> By Sarah Johnson</span
-                    >
-                  </div>
-                  <h3 class="blog-title">
-                    The Sacred Temple of the Tooth Relic: A Spiritual Journey in
-                    Kandy
-                  </h3>
-                  <p class="blog-excerpt">
-                    Discover the spiritual heart of Sri Lanka at the Temple of
-                    the Tooth Relic in Kandy. This UNESCO World Heritage site
-                    houses one of Buddhism's most sacred relics and offers
-                    visitors a profound glimpse into the country's rich
-                    religious heritage.
-                  </p>
-                  <div class="blog-tags">
-                    <span class="tag">Kandy</span>
-                    <span class="tag">Buddhism</span>
-                    <span class="tag">UNESCO</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="adventure">
-            <a href="./blog-single.html" class="read-more-btn">
-              <div class="blog-card h-100">
-                <div class="blog-image">
-                  <img
-                    src="./assets/home-page-banner.jpg"
-                    alt="Adam's Peak Sunrise"
-                    class="img-fluid"
-                  />
-                  <div class="blog-category">Adventure</div>
-                </div>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <span class="blog-date"
-                      ><i class="fas fa-calendar-alt"></i> March 12, 2025</span
-                    >
-                    <span class="blog-author"
-                      ><i class="fas fa-user"></i> By Mike Chen</span
-                    >
-                  </div>
-                  <h3 class="blog-title">
-                    Climbing Adam's Peak: A Sunrise Adventure You'll Never
-                    Forget
-                  </h3>
-                  <p class="blog-excerpt">
-                    Embark on the ultimate Sri Lankan adventure by climbing
-                    Adam's Peak at night to witness the breathtaking sunrise
-                    from the summit. This challenging yet rewarding trek offers
-                    spectacular views and a spiritual experience like no other.
-                  </p>
-                  <div class="blog-tags">
-                    <span class="tag">Adam's Peak</span>
-                    <span class="tag">Hiking</span>
-                    <span class="tag">Sunrise</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="food">
-            <a href="./blog-single.html" class="read-more-btn">
-              <div class="blog-card h-100">
-                <div class="blog-image">
-                  <img
-                    src="./assets/hotel.jpg"
-                    alt="Sri Lankan Curry"
-                    class="img-fluid"
-                  />
-                  <div class="blog-category">Food & Cuisine</div>
-                </div>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <span class="blog-date"
-                      ><i class="fas fa-calendar-alt"></i> March 10, 2025</span
-                    >
-                    <span class="blog-author"
-                      ><i class="fas fa-user"></i> By Priya Patel</span
-                    >
-                  </div>
-                  <h3 class="blog-title">
-                    A Culinary Journey Through Sri Lanka: From Street Food to
-                    Fine Dining
-                  </h3>
-                  <p class="blog-excerpt">
-                    Explore the diverse and flavorful world of Sri Lankan
-                    cuisine. From spicy curries and fresh seafood to aromatic
-                    rice dishes and tropical fruits, discover why Sri Lanka is
-                    becoming a food lover's paradise.
-                  </p>
-                  <div class="blog-tags">
-                    <span class="tag">Cuisine</span>
-                    <span class="tag">Street Food</span>
-                    <span class="tag">Curry</span>
-                  </div>
-                </div>
-              </div></a
-            >
-          </div>
-
-          <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="wildlife">
-            <a href="./blog-single.html" class="read-more-btn">
-              <div class="blog-card h-100">
-                <div class="blog-image">
-                  <img
-                    src="./assets/adventure.jpg"
-                    alt="Leopard in Yala"
-                    class="img-fluid"
-                  />
-                  <div class="blog-category">Wildlife</div>
-                </div>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <span class="blog-date"
-                      ><i class="fas fa-calendar-alt"></i> March 8, 2025</span
-                    >
-                    <span class="blog-author"
-                      ><i class="fas fa-user"></i> By David Wilson</span
-                    >
-                  </div>
-                  <h3 class="blog-title">
-                    Wildlife Safari in Yala National Park: Spotting Leopards and
-                    Elephants
-                  </h3>
-                  <p class="blog-excerpt">
-                    Experience the thrill of wildlife photography in Yala
-                    National Park, home to the highest density of leopards in
-                    the world. Learn the best times to visit and tips for
-                    capturing amazing wildlife moments.
-                  </p>
-                  <div class="blog-tags">
-                    <span class="tag">Yala</span>
-                    <span class="tag">Wildlife</span>
-                    <span class="tag">Safari</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div
-            class="col-12 col-lg-6 col-xl-4 mb-4"
-            data-category="travel-tips"
-          >
-            <a href="./blog-single.html" class="read-more-btn">
-              <div class="blog-card h-100">
-                <div class="blog-image">
-                  <img
-                    src="./assets/hotel.jpg"
-                    alt="Beach in Sri Lanka"
-                    class="img-fluid"
-                  />
-                  <div class="blog-category">Travel Tips</div>
-                </div>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <span class="blog-date"
-                      ><i class="fas fa-calendar-alt"></i> March 5, 2025</span
-                    >
-                    <span class="blog-author"
-                      ><i class="fas fa-user"></i> By Emma Thompson</span
-                    >
-                  </div>
-                  <h3 class="blog-title">
-                    Best Time to Visit Sri Lanka: Weather, Crowds, and Festivals
-                    Guide
-                  </h3>
-                  <p class="blog-excerpt">
-                    Plan your perfect Sri Lanka trip with our comprehensive
-                    guide to weather patterns, peak seasons, and cultural
-                    festivals. Find the ideal time to visit based on your
-                    interests and travel style.
-                  </p>
-                  <div class="blog-tags">
-                    <span class="tag">Travel Tips</span>
-                    <span class="tag">Weather</span>
-                    <span class="tag">Festivals</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-12 col-lg-6 col-xl-4 mb-4" data-category="culture">
-            <a href="./blog-single.html" class="read-more-btn">
-              <div class="blog-card h-100">
-                <div class="blog-image">
-                  <img
-                    src="./assets/wild.jpg"
-                    alt="Traditional Dance"
-                    class="img-fluid"
-                  />
-                  <div class="blog-category">Culture</div>
-                </div>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <span class="blog-date"
-                      ><i class="fas fa-calendar-alt"></i> March 3, 2025</span
-                    >
-                    <span class="blog-author"
-                      ><i class="fas fa-user"></i> By Rajesh Kumar</span
-                    >
-                  </div>
-                  <h3 class="blog-title">
-                    Traditional Sri Lankan Dance: The Art of Kandyan and Low
-                    Country Styles
-                  </h3>
-                  <p class="blog-excerpt">
-                    Immerse yourself in the vibrant world of Sri Lankan
-                    traditional dance. Discover the history, costumes, and
-                    significance of Kandyan and Low Country dance forms that
-                    have been preserved for generations.
-                  </p>
-                  <div class="blog-tags">
-                    <span class="tag">Dance</span>
-                    <span class="tag">Tradition</span>
-                    <span class="tag">Kandyan</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <!-- <section class="newsletter-section">
+  <!-- Newsletter Section -->
+  <!-- <section class="newsletter-section">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-8 mx-auto text-center">
@@ -407,125 +350,126 @@
       </div>
     </section> -->
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-      // Category filtering functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const categoryBtns = document.querySelectorAll(".category-btn");
-        const blogCards = document.querySelectorAll("[data-category]");
+  <script>
+    // Category filtering functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      const categoryBtns = document.querySelectorAll(".category-btn");
+      const blogCards = document.querySelectorAll("[data-category]");
 
-        categoryBtns.forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const category = this.getAttribute("data-category");
+      categoryBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const category = this.getAttribute("data-category");
 
-            // Update active button
-            categoryBtns.forEach((b) => b.classList.remove("active"));
-            this.classList.add("active");
+          // Update active button
+          categoryBtns.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
 
-            // Filter blog cards
-            blogCards.forEach((card) => {
-              if (
-                category === "all" ||
-                card.getAttribute("data-category") === category
-              ) {
-                card.style.display = "block";
-              } else {
-                card.style.display = "none";
-              }
-            });
+          // Filter blog cards
+          blogCards.forEach((card) => {
+            if (
+              category === "all" ||
+              card.getAttribute("data-category") === category
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
           });
         });
-
-        // Load more functionality
-        const loadMoreBtn = document.querySelector(".load-more-btn");
-        loadMoreBtn.addEventListener("click", function () {
-          alert("More blog posts will be loaded here! This is a demo feature.");
-        });
-
-        // Newsletter subscription
-        const newsletterForm = document.querySelector(".newsletter-form");
-        newsletterForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          alert("Thank you for subscribing to our newsletter!");
-        });
       });
-    </script>
 
-    <!-- Footer -->
-    <footer class="footer">
+      // Load more functionality
+      const loadMoreBtn = document.querySelector(".load-more-btn");
+      loadMoreBtn.addEventListener("click", function () {
+        alert("More blog posts will be loaded here! This is a demo feature.");
+      });
+
+      // Newsletter subscription
+      const newsletterForm = document.querySelector(".newsletter-form");
+      newsletterForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Thank you for subscribing to our newsletter!");
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="row">
+          <div class="col-12 col-lg-4">
+            <div class="footer-section">
+              <h4>DM Tours Sri Lanka</h4>
+              <p>
+                Your trusted partner for authentic Sri Lanka experiences. We
+                specialize in crafting unforgettable journeys that showcase
+                the true essence of this beautiful island nation.
+              </p>
+              <div class="footer-social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-2"></div>
+          <div class="col-12 col-lg-3">
+            <div class="footer-section">
+              <h4>Quick Links</h4>
+              <ul class="footer-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./tours.html">Tours</a></li>
+                <li><a href="./blogs.html">Blogs</a></li>
+                <li><a href="./testimonials.html">Testimonials</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3">
+            <div class="footer-section">
+              <h4>Contact Info</h4>
+              <ul class="footer-contact-info">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i> 123 Galle Road,
+                  Colombo 03, Sri Lanka
+                </li>
+                <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
+                <li><i class="fas fa-envelope"></i> info@dmtours.lk</li>
+                <li>
+                  <i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
       <div class="container">
-        <div class="footer-content">
-          <div class="row">
-            <div class="col-12 col-lg-4">
-              <div class="footer-section">
-                <h4>DM Tours Sri Lanka</h4>
-                <p>
-                  Your trusted partner for authentic Sri Lanka experiences. We
-                  specialize in crafting unforgettable journeys that showcase
-                  the true essence of this beautiful island nation.
-                </p>
-                <div class="footer-social-links">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-2"></div>
-            <div class="col-12 col-lg-3">
-              <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                  <li><a href="./index.html">Home</a></li>
-                  <li><a href="./about.html">About Us</a></li>
-                  <li><a href="./tours.html">Tours</a></li>
-                  <li><a href="./blogs.html">Blogs</a></li>
-                  <li><a href="./testimonials.html">Testimonials</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-12 col-lg-3">
-              <div class="footer-section">
-                <h4>Contact Info</h4>
-                <ul class="footer-contact-info">
-                  <li>
-                    <i class="fas fa-map-marker-alt"></i> 123 Galle Road,
-                    Colombo 03, Sri Lanka
-                  </li>
-                  <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
-                  <li><i class="fas fa-envelope"></i> info@dmtours.lk</li>
-                  <li>
-                    <i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            © 2025 DM Tours Sri Lanka. All rights reserved.
           </div>
+          <ul class="footer-bottom-links">
+            <li><a href="./contact.html">Privacy Policy</a></li>
+            <li><a href="./contact.html">Terms of Service</a></li>
+            <li><a href="./contact.html">Cookie Policy</a></li>
+          </ul>
         </div>
       </div>
+    </div>
+  </footer>
 
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="footer-bottom-content">
-            <div class="footer-copyright">
-              © 2025 DM Tours Sri Lanka. All rights reserved.
-            </div>
-            <ul class="footer-bottom-links">
-              <li><a href="./contact.html">Privacy Policy</a></li>
-              <li><a href="./contact.html">Terms of Service</a></li>
-              <li><a href="./contact.html">Cookie Policy</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <!-- Back to Top Button -->
+  <button class="footer-back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+</body>
 
-    <!-- Back to Top Button -->
-    <button class="footer-back-to-top" id="backToTop">
-      <i class="fas fa-chevron-up"></i>
-    </button>
-  </body>
 </html>
