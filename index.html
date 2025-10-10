@@ -81,8 +81,13 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
     as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" href="./assets/home-page-banner.jpg" as="image" />
-  <link rel="preload" href="./assets/back-video2.mp4" as="video" />
+  <link rel="preload" href="./assets/heroBack01.jpg" as="image" />
+  <link rel="preload" href="./assets/heroBack02.jpg" as="image" />
+  <link rel="preload" href="./assets/heroBack03.jpg" as="image" />
+  <link rel="preload" href="./assets/heroBack04.jpg" as="image" />
+  <link rel="preload" href="./assets/heroBack05.jpg" as="image" />
+  <link rel="preload" href="./assets/heroBack06.jpg" as="image" />
+  <link rel="preload" href="./assets/heroBack07.jpg" as="image" />
 
   <!-- Preload critical font files -->
   <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v23/pxiEyp8kv8JHgFVrJJfecg.woff2" as="font"
@@ -139,7 +144,7 @@
       color: #06c167 !important;
     }
 
-    .video-background {
+    .hero-carousel-container {
       position: fixed;
       top: 0;
       left: 0;
@@ -147,31 +152,36 @@
       height: 75vh;
       z-index: -1;
       overflow: hidden;
-      background-image: url("./assets/home-page-banner.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
     }
 
-    .video-background video {
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
 
-    .video-background video.loaded {
+    .carousel-slide.active {
       opacity: 1;
     }
 
-    .video-overlay {
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .carousel-overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -180,6 +190,7 @@
       background: linear-gradient(135deg,
           rgba(20, 35, 40, 0.7) 0%,
           rgba(0, 0, 0, 0.5) 100%);
+      z-index: 1;
     }
 
     .content {
@@ -295,7 +306,7 @@
         "url": "https://dmtours.lk",
         "logo": "https://dmtours.lk/assets/sri-lanka-banner.jpg",
         "image": "https://dmtours.lk/assets/sri-lanka-banner.jpg",
-        "telephone": "+94 11 234 5678",
+        "telephone": "+94 77 80 8689",
         "email": "info@dmtours.lk",
         "address": {
           "@type": "PostalAddress",
@@ -417,26 +428,30 @@
       </div>
     </div>
   </nav>
-  <div style="background-color: red">
-    <div class="video-background" style="
-          background-image: url('./assets/home-page-banner.jpg');
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-        ">
-      <video id="background-video" autoplay muted loop playsinline>
-        <source src="./assets/back-video2.mp4" type="video/mp4" />
-        <!-- https://youtu.be/sprotb7pjOE -->
-        <!-- <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                type="video/mp4"> -->
-        <!-- Fallback for browsers that don't support video -->
-        <div style="
-              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-              width: 100%;
-              height: 100%;
-            "></div>
-      </video>
-      <div class="video-overlay"></div>
+  <div class="hero-carousel-container">
+    <div class="hero-carousel">
+      <div class="carousel-slide active">
+        <img src="./assets/heroBack01.jpg" alt="Sri Lanka Hero Background 1" />
+      </div>
+      <div class="carousel-slide">
+        <img src="./assets/heroBack02.jpg" alt="Sri Lanka Hero Background 2" />
+      </div>
+      <div class="carousel-slide">
+        <img src="./assets/heroBack03.jpg" alt="Sri Lanka Hero Background 3" />
+      </div>
+      <div class="carousel-slide">
+        <img src="./assets/heroBack04.jpg" alt="Sri Lanka Hero Background 4" />
+      </div>
+      <div class="carousel-slide">
+        <img src="./assets/heroBack05.jpg" alt="Sri Lanka Hero Background 5" />
+      </div>
+      <div class="carousel-slide">
+        <img src="./assets/heroBack06.jpg" alt="Sri Lanka Hero Background 6" />
+      </div>
+      <div class="carousel-slide">
+        <img src="./assets/heroBack07.jpg" alt="Sri Lanka Hero Background 7" />
+      </div>
+      <div class="carousel-overlay"></div>
     </div>
   </div>
 
@@ -549,15 +564,15 @@
     <div class="container">
       <div class="analytics-box">
         <div class="analytics-item">
-          <div class="analytics-number">5000+</div>
+          <div class="analytics-number">500+</div>
           <div class="analytics-label">Happy Travelers</div>
         </div>
         <div class="analytics-item">
-          <div class="analytics-number">150+</div>
+          <div class="analytics-number">10+</div>
           <div class="analytics-label">Tour Packages</div>
         </div>
         <div class="analytics-item">
-          <div class="analytics-number">25+</div>
+          <div class="analytics-number">5+</div>
           <div class="analytics-label">Years Experience</div>
         </div>
         <div class="analytics-item">
@@ -1049,7 +1064,7 @@
                   <i class="fas fa-map-marker-alt"></i> 123 Galle Road,
                   Colombo 03, Sri Lanka
                 </li>
-                <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
+                <li><i class="fas fa-phone"></i> +94 77 80 8689</li>
                 <li><i class="fas fa-envelope"></i> info@dmtours.lk</li>
                 <li>
                   <i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM
@@ -1102,56 +1117,33 @@
     });
   </script>
 
-  <!-- Video Background Script -->
+  <!-- Hero Carousel Script -->
   <script>
-    // Ensure video is muted and looping with smooth transition from background image
+    // Hero image carousel functionality
     document.addEventListener("DOMContentLoaded", function () {
-      const video = document.getElementById("background-video");
-
-      if (video) {
-        // Force mute the video
-        video.muted = true;
-
-        // Ensure loop is enabled
-        video.loop = true;
-
-        // Ensure autoplay works
-        video.autoplay = true;
-
-        // Add event listeners to handle video behavior
-        video.addEventListener("loadedmetadata", function () {
-          video.muted = true;
-          video.loop = true;
-        });
-
-        video.addEventListener("canplay", function () {
-          // Add loaded class for smooth transition from background image to video
-          video.classList.add("loaded");
-        });
-
-        video.addEventListener("play", function () {
-          video.muted = true;
-        });
-
-        // Handle any user interaction that might unmute the video
-        video.addEventListener("volumechange", function () {
-          if (!video.muted) {
-            video.muted = true;
-          }
-        });
-
-        // Ensure video restarts when it ends (for loop functionality)
-        video.addEventListener("ended", function () {
-          video.currentTime = 0;
-          video.play();
-        });
-
-        // Fallback: if video fails to load, ensure background image is visible
-        video.addEventListener("error", function () {
-          console.log("Video failed to load, showing background image");
-          video.style.display = "none";
-        });
+      const slides = document.querySelectorAll('.carousel-slide');
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Add active class to current slide
+        if (slides[index]) {
+          slides[index].classList.add('active');
+        }
       }
+      
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+      
+      // Initialize first slide
+      showSlide(0);
+      
+      // Auto-advance every 1 second
+      setInterval(nextSlide, 5000);
     });
   </script>
 </body>

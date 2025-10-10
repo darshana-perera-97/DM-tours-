@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact DM Tours Sri Lanka | Book Your Tour | +94 11 234 5678</title>
+    <title>Contact DM Tours Sri Lanka | Book Your Tour | +94 77 80 8689</title>
 
     <!-- SEO Meta Tags -->
     <meta
       name="description"
-      content="Contact DM Tours Sri Lanka for tour bookings and inquiries. Call +94 11 234 5678 or email info@dmtours.lk. Visit our office at 123 Galle Road, Colombo 03. Get instant quotes for Sri Lanka tour packages."
+      content="Contact DM Tours Sri Lanka for tour bookings and inquiries. Call +94 77 80 8689 or email info@dmtours.lk. Visit our office at 123 Galle Road, Colombo 03. Get instant quotes for Sri Lanka tour packages."
     />
     <meta
       name="keywords"
@@ -24,11 +24,11 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Contact DM Tours Sri Lanka | Book Your Tour | +94 11 234 5678"
+      content="Contact DM Tours Sri Lanka | Book Your Tour | +94 77 80 8689"
     />
     <meta
       property="og:description"
-      content="Contact DM Tours Sri Lanka for tour bookings and inquiries. Call +94 11 234 5678 or email info@dmtours.lk. Visit our office at 123 Galle Road, Colombo 03."
+      content="Contact DM Tours Sri Lanka for tour bookings and inquiries. Call +94 77 80 8689 or email info@dmtours.lk. Visit our office at 123 Galle Road, Colombo 03."
     />
     <meta property="og:url" content="https://dmtours.lk/contact.html" />
     <meta property="og:site_name" content="DM Tours Sri Lanka" />
@@ -42,11 +42,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Contact DM Tours Sri Lanka | Book Your Tour | +94 11 234 5678"
+      content="Contact DM Tours Sri Lanka | Book Your Tour | +94 77 80 8689"
     />
     <meta
       name="twitter:description"
-      content="Contact DM Tours Sri Lanka for tour bookings and inquiries. Call +94 11 234 5678 or email info@dmtours.lk."
+      content="Contact DM Tours Sri Lanka for tour bookings and inquiries. Call +94 77 80 8689 or email info@dmtours.lk."
     />
     <meta
       name="twitter:image"
@@ -175,7 +175,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <h4>Phone Numbers</h4>
-                        <p>📞 +94 11 234 5678<br>📱 +94 77 123 4567<br>📞 +94 11 234 5679</p>
+                        <p>📞 +94 77 80 8689<br>📱 +94 77 80 8689<br>📞 +94 11 234 5679</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
@@ -422,7 +422,7 @@
                 <p>For urgent matters outside office hours:</p>
                 <div class="emergency-contact">
                   <i class="fas fa-phone-alt"></i>
-                  <span>+94 77 123 4567</span>
+                  <span>+94 77 80 8689</span>
                 </div>
               </div>
 
@@ -620,11 +620,38 @@
             formObject[key] = value;
           });
 
-          // Show success message
-          showSuccessMessage();
+          // Show loading state
+          const submitBtn = this.querySelector('.submit-btn');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+          submitBtn.disabled = true;
 
-          // Reset form
-          this.reset();
+          // Send data to PHP backend
+          fetch('send_email.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formObject)
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              showSuccessMessage(data.message);
+              this.reset();
+            } else {
+              showErrorMessage(data.message || 'An error occurred. Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            showErrorMessage('Network error. Please check your connection and try again.');
+          })
+          .finally(() => {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          });
         });
 
         // Date validation
@@ -670,24 +697,52 @@
         return true;
       }
 
-      function showSuccessMessage() {
+      function showSuccessMessage(message = "Thank you for your message! We'll get back to you within 24 hours.") {
+        // Remove any existing alerts
+        const existingAlerts = document.querySelectorAll('.alert');
+        existingAlerts.forEach(alert => alert.remove());
+
         const alertDiv = document.createElement("div");
         alertDiv.className = "alert alert-success alert-dismissible fade show";
         alertDiv.innerHTML = `
                 <i class="fas fa-check-circle me-2"></i>
-                Thank you for your message! We'll get back to you within 24 hours.
+                ${message}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             `;
 
         const form = document.getElementById("contactForm");
         form.parentNode.insertBefore(alertDiv, form);
 
-        // Auto-dismiss after 5 seconds
+        // Auto-dismiss after 8 seconds
         setTimeout(() => {
           if (alertDiv.parentNode) {
             alertDiv.remove();
           }
-        }, 5000);
+        }, 8000);
+      }
+
+      function showErrorMessage(message) {
+        // Remove any existing alerts
+        const existingAlerts = document.querySelectorAll('.alert');
+        existingAlerts.forEach(alert => alert.remove());
+
+        const alertDiv = document.createElement("div");
+        alertDiv.className = "alert alert-danger alert-dismissible fade show";
+        alertDiv.innerHTML = `
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+        const form = document.getElementById("contactForm");
+        form.parentNode.insertBefore(alertDiv, form);
+
+        // Auto-dismiss after 10 seconds
+        setTimeout(() => {
+          if (alertDiv.parentNode) {
+            alertDiv.remove();
+          }
+        }, 10000);
       }
 
       // Add some interactive effects
@@ -745,7 +800,7 @@
                     <i class="fas fa-map-marker-alt"></i> 123 Galle Road,
                     Colombo 03, Sri Lanka
                   </li>
-                  <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
+                  <li><i class="fas fa-phone"></i> +94 77 80 8689</li>
                   <li><i class="fas fa-envelope"></i> info@dmtours.lk</li>
                   <li>
                     <i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM

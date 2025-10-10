@@ -1,0 +1,1 @@
+2025-10-10 17:32:34 - Email sending error: Failed to send email using mail() function
