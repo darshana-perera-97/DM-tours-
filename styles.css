@@ -2135,6 +2135,7 @@ body {
 
 .related-post-content {
     padding: 1.5rem;
+    padding-left: 0px;
 }
 
 .related-post-content h5 {
@@ -2142,7 +2143,7 @@ body {
     line-height: 1.4;
 }
 
-.related-post-content h5 a {
+.related-post-content h5 a, .related-post-content a {
     color: #142328;
     text-decoration: none;
 }
@@ -3584,10 +3585,259 @@ body {
 .testimonials-section .section-title {
     text-align: center;
     color: #142328;
+}
+
+/* Legal Pages Styles */
+.page-header {
+    background: linear-gradient(135deg, #142328 0%, #2c3e50 100%);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../assets/heroBack01.jpg') center/cover;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.page-header .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 500;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
     margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.page-header .breadcrumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 15px 25px;
+    margin: 0 auto;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.page-header .breadcrumb-item {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.page-header .breadcrumb-item a {
+    color: #06C167;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.page-header .breadcrumb-item a:hover {
+    color: #05a85a;
+}
+
+.page-header .breadcrumb-item.active {
+    color: white;
+}
+
+.legal-content {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.legal-document {
+    background: white;
+    border-radius: 15px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+.legal-document .last-updated {
+    color: #6c757d;
+    font-style: italic;
+    margin-bottom: 2rem;
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.legal-document h2 {
+    color: #142328;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #06C167;
+}
+
+.legal-document h2:first-of-type {
+    margin-top: 0;
+}
+
+.legal-document h3 {
+    color: #142328;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+}
+
+.legal-document p {
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.legal-document ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.legal-document li {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.legal-document a {
+    color: #06C167;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.legal-document a:hover {
+    color: #05a85a;
+    text-decoration: underline;
+}
+
+.legal-document .contact-info {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #06C167;
+    margin: 2rem 0;
+}
+
+.legal-document .contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.legal-document .contact-info strong {
+    color: #142328;
+}
+
+/* Responsive Design for Legal Pages */
+@media (max-width: 991.98px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .legal-document {
+        padding: 40px;
+    }
+    
+    .legal-document h2 {
+        font-size: 1.6rem;
+    }
+    
+    .legal-document h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-header {
+        padding: 100px 0 60px;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .page-header .breadcrumb {
+        padding: 12px 20px;
+        max-width: 350px;
+    }
+    
+    .legal-content {
+        padding: 60px 0;
+    }
+    
+    .legal-document {
+        padding: 30px;
+        margin: 0 15px;
+    }
+    
+    .legal-document h2 {
+        font-size: 1.4rem;
+    }
+    
+    .legal-document h3 {
+        font-size: 1.2rem;
+    }
+    
+    .legal-document p,
+    .legal-document li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page-header {
+        padding: 80px 0 40px;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .page-header .breadcrumb {
+        padding: 10px 15px;
+        max-width: 300px;
+    }
+    
+    .page-header .breadcrumb-item {
+        font-size: 0.8rem;
+    }
+    
+    .legal-content {
+        padding: 40px 0;
+    }
+    
+    .legal-document {
+        padding: 25px;
+        margin: 0 10px;
+    }
+    
+    .legal-document h2 {
+        font-size: 1.3rem;
+    }
+    
+    .legal-document h3 {
+        font-size: 1.1rem;
+    }
+    
+    .legal-document p,
+    .legal-document li {
+        font-size: 0.9rem;
+    }
+    
+    .legal-document .contact-info {
+        padding: 20px;
+    }
 }
 
 /* Call to Action Section */
@@ -3662,6 +3912,11 @@ body {
     padding: 4rem 0 0 0;
     position: relative;
     overflow: hidden;
+}
+
+.footer a{
+    text-decoration: none;
+    color: #b0b0b0;
 }
 
 .footer::before {
