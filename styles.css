@@ -1018,7 +1018,7 @@ body {
 }
 
 .testimonial-author {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
@@ -1047,7 +1047,7 @@ body {
     font-weight: 600;
     font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 0.25rem;
+    margin-bottom: -0.2rem;
 }
 
 .author-location {
