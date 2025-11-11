@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/dmtours-logo.jpg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/dmtours-logo.jpg" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/dmtours-logo.jpg" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website" />
@@ -55,7 +55,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css" />
 
-  
+
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KLKFVKN3LQ"></script>
@@ -478,22 +478,133 @@
           formObject[key] = value;
         });
 
+        // Client-side validation
+        const requiredFields = ['firstName', 'lastName', 'email', 'country', 'subject', 'message'];
+        const errors = [];
+
+        requiredFields.forEach(field => {
+          if (!formObject[field] || formObject[field].trim() === '') {
+            errors.push(`${field === 'firstName' ? 'First Name' : field === 'lastName' ? 'Last Name' : field.charAt(0).toUpperCase() + field.slice(1)} is required`);
+          }
+        });
+
+        // Validate email format
+        if (formObject.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formObject.email)) {
+          errors.push('Please enter a valid email address');
+        }
+
+        // Show validation errors
+        if (errors.length > 0) {
+          showErrorMessage(errors.join('<br>'));
+          return;
+        }
+
         // Show loading state
         const submitBtn = this.querySelector('.submit-btn');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
         submitBtn.disabled = true;
 
-        // Send data to PHP backend
-        fetch('contact_handler.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formObject)
-        })
-          .then(response => response.json())
+        // Prepare contact data in the format expected by the API
+        const contactData = {
+          timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+          ip_address: 'Unknown', // Client-side can't reliably get IP
+          user_agent: navigator.userAgent,
+          name: `${formObject.firstName || ''} ${formObject.lastName || ''}`.trim(),
+          email: formObject.email || '',
+          phone: formObject.phone || 'Not provided',
+          country: formObject.country ? formObject.country.charAt(0).toUpperCase() + formObject.country.slice(1) : '',
+          subject: formObject.subject ? formObject.subject.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : '',
+          message: formObject.message || '',
+          travel_start: formObject.travelStart || 'Not specified',
+          travel_end: formObject.travelEnd || 'Not specified',
+          travelers: formObject.travelers || 'Not specified',
+          newsletter: formObject.newsletter ? 'Yes' : 'No',
+          status: 'new'
+        };
+
+        // External API endpoint
+        // const apiBaseUrl = 'http://localhost:3056/dm-tors/contactform';
+        const apiBaseUrl = 'http://69.197.187.24:3056/dm-tors/contactform';
+
+        // Check if API is localhost (external proxies won't work for localhost)
+        const isLocalhost = apiBaseUrl.includes('localhost') || apiBaseUrl.includes('127.0.0.1');
+
+        // Function to send request
+        const sendRequest = async () => {
+          return fetch(apiBaseUrl, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(contactData)
+          });
+        };
+
+        // Execute the request
+        sendRequest()
+          .then(async response => {
+            // Get response text first
+            const responseText = await response.text();
+
+            // Log response for debugging
+            console.log('API Response status:', response.status);
+            console.log('API Response text:', responseText);
+
+            // Check if response is empty
+            if (!responseText || responseText.trim() === '') {
+              // Empty response but status is OK - treat as success
+              if (response.ok) {
+                return { success: true, message: 'Thank you for your message! We have received your inquiry and will get back to you within 24 hours.' };
+              }
+              throw new Error(`Empty response from server (Status: ${response.status})`);
+            }
+
+            // Try to parse as JSON
+            let responseData = null;
+            try {
+              responseData = JSON.parse(responseText);
+            } catch (parseError) {
+              // If not JSON but status is OK, treat as success
+              if (response.ok) {
+                return { success: true, message: 'Thank you for your message! We have received your inquiry and will get back to you within 24 hours.' };
+              }
+              throw new Error(`Invalid response format: ${responseText}`);
+            }
+
+            // Check HTTP status
+            if (!response.ok) {
+              throw new Error(responseData.message || `Server error: ${response.status}`);
+            }
+
+            // Success response
+            return {
+              success: true,
+              message: 'Thank you for your message! We have received your inquiry and will get back to you within 24 hours.',
+              apiResponse: responseData
+            };
+          })
           .then(data => {
+            // Save to localStorage as backup (optional)
+            try {
+              const submission = {
+                ...contactData,
+                submittedAt: new Date().toISOString(),
+                apiResponse: data.apiResponse
+              };
+              const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+              submissions.push(submission);
+              // Keep only last 50 submissions
+              if (submissions.length > 50) {
+                submissions.shift();
+              }
+              localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+            } catch (e) {
+              console.warn('Could not save to localStorage:', e);
+            }
+
             if (data.success) {
               showSuccessMessage(data.message);
               this.reset();
@@ -503,7 +614,70 @@
           })
           .catch(error => {
             console.error('Error:', error);
-            showErrorMessage('Network error. Please check your connection and try again.');
+            console.error('Error details:', {
+              message: error.message,
+              stack: error.stack,
+              name: error.name
+            });
+
+            // More specific error message based on error type
+            let errorMessage = 'Network error. Please check your connection and try again.';
+
+            // Check for CORS errors
+            if (error.message && (error.message.includes('Failed to fetch') || error.message.includes('CORS'))) {
+              if (isLocalhost) {
+                errorMessage = 'CORS Error: The API server at ' + apiBaseUrl + ' is not configured to allow requests from ' + window.location.origin + '. ' +
+                  '<br><br><strong>To fix this, configure your API server to include these CORS headers:</strong>' +
+                  '<br>• Access-Control-Allow-Origin: * (or ' + window.location.origin + ')' +
+                  '<br>• Access-Control-Allow-Methods: POST, OPTIONS' +
+                  '<br>• Access-Control-Allow-Headers: Content-Type' +
+                  '<br><br><strong>Note:</strong> External CORS proxies cannot access localhost APIs. The API server must be configured to allow CORS.';
+              } else {
+                errorMessage = 'CORS Error: The API server is not configured to allow requests from your domain. ' +
+                  'Please contact the administrator to configure CORS headers on the API server.';
+              }
+
+              // Log helpful information for developers
+              console.error('CORS Error Details:', {
+                apiEndpoint: apiBaseUrl,
+                currentOrigin: window.location.origin,
+                isLocalhost: isLocalhost,
+                suggestion: 'The API server needs to include these headers:',
+                requiredHeaders: [
+                  'Access-Control-Allow-Origin: * (or ' + window.location.origin + ')',
+                  'Access-Control-Allow-Methods: POST, OPTIONS',
+                  'Access-Control-Allow-Headers: Content-Type'
+                ]
+              });
+            } else if (error.message && error.message.includes('NetworkError')) {
+              errorMessage = 'Network error. Please check your internet connection and try again.';
+            } else if (error.message) {
+              errorMessage = error.message;
+            }
+
+            // Still save to localStorage even on error (for debugging)
+            try {
+              const errorSubmission = {
+                ...contactData,
+                submittedAt: new Date().toISOString(),
+                error: error.message,
+                errorType: 'CORS/Network Error',
+                apiEndpoint: apiBaseUrl,
+                origin: window.location.origin,
+                isLocalhost: isLocalhost
+              };
+              const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+              submissions.push(errorSubmission);
+              if (submissions.length > 50) {
+                submissions.shift();
+              }
+              localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+              console.log('Submission saved to localStorage for debugging. Check localStorage.getItem("contactSubmissions")');
+            } catch (e) {
+              console.warn('Could not save error to localStorage:', e);
+            }
+
+            showErrorMessage(errorMessage);
           })
           .finally(() => {
             // Reset button state

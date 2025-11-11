@@ -3,6 +3,139 @@
 ## Overview
 This system handles contact form submissions by saving them to files instead of sending emails via SMTP. This approach is more reliable and doesn't require email server configuration.
 
+## How to Submit Data in the Contact Form
+
+### Accessing the Contact Form
+1. Navigate to the contact page: `contact.html` (or `yoursite.com/contact.html`)
+2. The contact form is displayed in the main content area
+
+### Step-by-Step Instructions
+
+#### Step 1: Fill in Personal Information
+- **First Name** (Required): Enter your first name
+- **Last Name** (Required): Enter your last name
+- **Email Address** (Required): Enter a valid email address where we can reach you
+  - Format: `name@example.com`
+  - The system validates email format automatically
+- **Phone Number** (Optional): Enter your phone number with country code if available
+  - Example: `+94 77 880 8689` or `+1 234 567 8900`
+
+#### Step 2: Select Your Location
+- **Country** (Required): Select your country from the dropdown menu
+  - Options include: USA, UK, Canada, Australia, Germany, France, India, China, Japan, Singapore, Malaysia, Thailand, or Other
+
+#### Step 3: Choose Subject
+- **Subject** (Required): Select the purpose of your inquiry from the dropdown:
+  - **Tour Inquiry**: General questions about tours
+  - **Make a Booking**: Ready to book a tour
+  - **Custom Tour Request**: Want a personalized itinerary
+  - **Pricing Information**: Questions about tour prices
+  - **Partnership Opportunity**: Business partnership inquiries
+  - **Feedback & Suggestions**: Share your feedback
+  - **Other**: Any other inquiries
+
+#### Step 4: Write Your Message
+- **Message** (Required): Provide details about your inquiry
+  - Include information about:
+    - Your travel interests
+    - Specific questions or requirements
+    - Any special needs or preferences
+    - Budget considerations (if applicable)
+  - Minimum: A few sentences describing your needs
+
+#### Step 5: Travel Details (Optional but Recommended)
+- **Preferred Travel Dates**:
+  - **Start Date**: Select your preferred arrival date
+  - **End Date**: Select your preferred departure date
+  - Note: End date must be after start date
+- **Number of Travelers**: Select from the dropdown:
+  - 1 person
+  - 2 people
+  - 3-5 people
+  - 6-10 people
+  - More than 10 people
+
+#### Step 6: Newsletter Subscription (Optional)
+- Check the box if you want to receive:
+  - Travel tips
+  - Special offers
+  - Newsletter updates
+
+#### Step 7: Submit the Form
+1. Review all your information
+2. Click the **"Send Message"** button
+3. Wait for the confirmation message (usually appears within a few seconds)
+
+### What Happens After Submission
+
+1. **Immediate Feedback**:
+   - You'll see a success message: "Thank you for your message! We have received your inquiry and will get back to you within 24 hours."
+   - The form will reset automatically
+   - If there are errors, you'll see specific error messages
+
+2. **Processing**:
+   - Your data is validated on the server
+   - Data is sent to the external API endpoint
+   - A unique submission file is created
+   - Your inquiry is logged in the system
+
+3. **Response Time**:
+   - You can expect a response within 24 hours
+   - For urgent matters, use the emergency contact: **+94 77 880 8689**
+
+### Tips for Best Results
+
+1. **Be Specific**: The more details you provide, the better we can assist you
+   - Include preferred travel dates if known
+   - Mention specific interests (beaches, wildlife, culture, etc.)
+   - Note any special requirements (dietary, accessibility, etc.)
+
+2. **Required Fields**: Make sure all required fields (marked with *) are filled
+   - First Name
+   - Last Name
+   - Email Address
+   - Country
+   - Subject
+   - Message
+
+3. **Email Validation**: Ensure your email address is correct and active
+   - Check for typos
+   - Use an email you check regularly
+
+4. **Travel Dates**: If you have flexible dates, mention it in your message
+   - Example: "Flexible between March and May 2025"
+
+5. **Multiple Inquiries**: If you have multiple questions, it's better to:
+   - Include all questions in one message, OR
+   - Submit separate forms for different topics
+
+### Form Validation
+
+The form includes automatic validation:
+- **Email format**: Must be a valid email address
+- **Date validation**: End date must be after start date
+- **Required fields**: Cannot be left empty
+- **Real-time feedback**: Fields show validation status as you type
+
+### Troubleshooting Submission Issues
+
+If you encounter problems submitting the form:
+
+1. **Check Required Fields**: Ensure all required fields are filled
+2. **Email Format**: Verify your email address is correctly formatted
+3. **Date Range**: Make sure end date is after start date
+4. **Browser Console**: Check browser console (F12) for JavaScript errors
+5. **Network Connection**: Ensure you have a stable internet connection
+6. **Try Again**: Wait a moment and try submitting again
+
+### Privacy and Security
+
+- All form data is securely processed
+- Your information is stored safely
+- IP addresses are logged for security purposes
+- Data is sent to the external API securely via HTTPS
+- See our Privacy Policy for more details
+
 ## Files Structure
 
 ### Core Files
