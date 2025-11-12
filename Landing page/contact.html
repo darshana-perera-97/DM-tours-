@@ -581,8 +581,9 @@
           }
 
           // External API endpoint
-          // const apiBaseUrl = 'http://localhost:3056/dm-tors/contactform';
-          const apiBaseUrl = 'http://69.197.187.24:3056/dm-tors/contactform';
+          // const apiBaseUrl = 'http://localhost:3057/dm-tors/contactform';
+          // https://www.api.dmtours.lk/
+          const apiBaseUrl = 'https://www.api.dmtours.lk/dm-tors/contactform';
 
           // Check if API is localhost (external proxies won't work for localhost)
           const isLocalhost = apiBaseUrl.includes('localhost') || apiBaseUrl.includes('127.0.0.1');
@@ -664,7 +665,7 @@
 
               if (data.success) {
                 showSuccessMessage(data.message);
-                this.reset();
+                contactForm.reset();
               } else {
                 showErrorMessage(data.message || 'An error occurred. Please try again.');
               }
