@@ -84,14 +84,18 @@
   <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
     as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <style>
+    @font-face {
+      font-family: 'Playfair Display';
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-display: swap;
+    }
+  </style>
   <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="preload" href="./assets/heroBack01.jpg" as="image" />
-  <link rel="preload" href="./assets/heroBack02.jpg" as="image" />
-  <link rel="preload" href="./assets/heroBack03.jpg" as="image" />
-  <link rel="preload" href="./assets/heroBack04.jpg" as="image" />
-  <link rel="preload" href="./assets/heroBack05.jpg" as="image" />
-  <link rel="preload" href="./assets/heroBack06.jpg" as="image" />
-  <link rel="preload" href="./assets/heroBack07.jpg" as="image" />
+  <link rel="preload" href="./assets/heroBack01.jpg" as="image" fetchpriority="high" />
 
   <!-- Preload critical font files -->
   <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v23/pxiEyp8kv8JHgFVrJJfecg.woff2" as="font"
@@ -261,14 +265,21 @@
     }
   </style>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KLKFVKN3LQ"></script>
+  <!-- Google tag (gtag.js) - Deferred for better performance -->
   <script>
+    // Defer Google Analytics to improve page load performance
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-KLKFVKN3LQ');
+    
+    // Load analytics script after page load
+    window.addEventListener('load', function() {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KLKFVKN3LQ';
+      document.head.appendChild(script);
+    });
   </script>
 
   <!-- Defer non-critical CSS to load after page render -->
@@ -307,6 +318,16 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet" />
+    <style>
+      @font-face {
+        font-family: 'Playfair Display';
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Poppins';
+        font-display: swap;
+      }
+    </style>
   </noscript>
 
   <!-- Structured Data (JSON-LD) -->
@@ -435,25 +456,25 @@
   <div class="hero-carousel-container">
     <div class="hero-carousel">
       <div class="carousel-slide active">
-        <img src="./assets/heroBack01.jpg" alt="Sri Lanka Hero Background 1" />
+        <img src="./assets/heroBack01.jpg" alt="Sri Lanka Hero Background 1" width="1920" height="1080" fetchpriority="high" decoding="async" />
       </div>
       <div class="carousel-slide">
-        <img src="./assets/heroBack02.jpg" alt="Sri Lanka Hero Background 2" />
+        <img src="./assets/heroBack02.jpg" alt="Sri Lanka Hero Background 2" width="1920" height="1080" loading="lazy" decoding="async" />
       </div>
       <div class="carousel-slide">
-        <img src="./assets/heroBack03.jpg" alt="Sri Lanka Hero Background 3" />
+        <img src="./assets/heroBack03.jpg" alt="Sri Lanka Hero Background 3" width="1920" height="1080" loading="lazy" decoding="async" />
       </div>
       <div class="carousel-slide">
-        <img src="./assets/heroBack04.jpg" alt="Sri Lanka Hero Background 4" />
+        <img src="./assets/heroBack04.jpg" alt="Sri Lanka Hero Background 4" width="1920" height="1080" loading="lazy" decoding="async" />
       </div>
       <div class="carousel-slide">
-        <img src="./assets/heroBack05.jpg" alt="Sri Lanka Hero Background 5" />
+        <img src="./assets/heroBack05.jpg" alt="Sri Lanka Hero Background 5" width="1920" height="1080" loading="lazy" decoding="async" />
       </div>
       <div class="carousel-slide">
-        <img src="./assets/heroBack06.jpg" alt="Sri Lanka Hero Background 6" />
+        <img src="./assets/heroBack06.jpg" alt="Sri Lanka Hero Background 6" width="1920" height="1080" loading="lazy" decoding="async" />
       </div>
       <div class="carousel-slide">
-        <img src="./assets/heroBack07.jpg" alt="Sri Lanka Hero Background 7" />
+        <img src="./assets/heroBack07.jpg" alt="Sri Lanka Hero Background 7" width="1920" height="1080" loading="lazy" decoding="async" />
       </div>
       <div class="carousel-overlay"></div>
     </div>
@@ -615,7 +636,7 @@
 
         <div class="tour-card">
           <div class="tour-image">
-            <img src="./assets/sigiriya.jpg" alt="Sri Lanka Cultural Tours - Sigiriya, Kandy, Anuradhapura" />
+            <img src="./assets/sigiriya.jpg" alt="Sri Lanka Cultural Tours - Sigiriya, Kandy, Anuradhapura" width="354" height="236" loading="lazy" decoding="async" />
           </div>
           <div class="tour-content">
             <h3 class="tour-title">
@@ -633,7 +654,7 @@
 
         <div class="tour-card">
           <div class="tour-image">
-            <img src="./assets/wild.jpg" alt="Sri Lanka Wildlife Safari Tours - Yala, Udawalawe, Sinharaja" />
+            <img src="./assets/wild.jpg" alt="Sri Lanka Wildlife Safari Tours - Yala, Udawalawe, Sinharaja" width="354" height="236" loading="lazy" decoding="async" />
           </div>
           <div class="tour-content">
             <h3 class="tour-title">
@@ -651,7 +672,7 @@
 
         <div class="tour-card">
           <div class="tour-image">
-            <img src="./assets/adventure.jpg" alt="Sri Lanka Adventure Travel - Hiking, Trekking, Water Sports" />
+            <img src="./assets/adventure.jpg" alt="Sri Lanka Adventure Travel - Hiking, Trekking, Water Sports" width="354" height="236" loading="lazy" decoding="async" />
           </div>
           <div class="tour-content">
             <h3 class="tour-title">
@@ -692,7 +713,7 @@
           <a href="./contact.html" class="banner-cta">Contact Us Now</a>
         </div>
         <div class="banner-image">
-          <img src="./assets/travel-p.png" alt="Sri Lanka Tourism Illustration" />
+          <img src="./assets/travel-p.png" alt="Sri Lanka Tourism Illustration" width="500" height="400" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -839,50 +860,22 @@
   <script>
     // Add smooth scrolling for the CTA button
 
-    // Add some interactive effects with optimized animations
+    // Optimized content fade-in animation using composited properties
     document.addEventListener("DOMContentLoaded", function () {
       const content = document.querySelector(".content");
       if (content) {
-        // Use requestAnimationFrame to avoid forced reflows
+        // Use CSS classes instead of inline styles to avoid forced reflows
+        content.classList.add("content-loading");
         requestAnimationFrame(() => {
-          content.style.opacity = "0";
-          content.style.transform = "translateY(30px)";
-
           setTimeout(() => {
-            content.style.transition = "all 1s ease";
-            content.style.opacity = "1";
-            content.style.transform = "translateY(0)";
-          }, 300);
+            content.classList.remove("content-loading");
+            content.classList.add("content-loaded");
+          }, 50);
         });
       }
     });
 
-    // Optimized mouse movement animation with throttling
-    let mouseMoveTimeout;
-    document.addEventListener("mousemove", function (e) {
-      // Throttle mouse movement to reduce reflows
-      if (mouseMoveTimeout) {
-        return;
-      }
-
-      mouseMoveTimeout = setTimeout(() => {
-        const content = document.querySelector(".content");
-        if (content) {
-          const mouseX = e.clientX / window.innerWidth;
-          const mouseY = e.clientY / window.innerHeight;
-
-          // Calculate movement (subtle effect)
-          const moveX = (mouseX - 0.5) * 20; // Max 20px movement
-          const moveY = (mouseY - 0.5) * 15; // Max 15px movement
-
-          // Use requestAnimationFrame to batch DOM updates
-          requestAnimationFrame(() => {
-            content.style.transform = `translate(${moveX}px, ${moveY}px)`;
-          });
-        }
-        mouseMoveTimeout = null;
-      }, 16); // ~60fps throttling
-    });
+    // Removed mouse movement animation to prevent forced reflows and improve performance
 
     // Count up animation for analytics
     function animateCountUp(element, target, duration = 2000) {
@@ -1106,8 +1099,8 @@
   </button>
 
   <!-- WhatsApp Floating Button -->
-  <a href="#whatsapp-link" class="whatsapp-float" aria-label="Contact us on WhatsApp">
-    <img src="./assets/whatsappIcon.png" alt="WhatsApp" />
+  <a href="https://wa.me/94778808689" class="whatsapp-float" aria-label="Contact us on WhatsApp">
+    <img src="./assets/whatsappIcon.png" alt="WhatsApp" width="40" height="40" loading="lazy" decoding="async" />
   </a>
 
   <!-- Defer Bootstrap JS to load after critical content -->

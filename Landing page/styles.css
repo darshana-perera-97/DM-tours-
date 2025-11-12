@@ -76,27 +76,7 @@ body {
 
 .navbar-nav .btn-primary:hover {
     background: #05a85a !important;
-    border: none !important;
-    color: #142328 !important;
     padding: 12px 35px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    margin-left: 1rem;
-    text-decoration: none !important;
-}
-
-.navbar-nav .btn-primary {
-    background: #06C167 !important;
-    border: none !important;
-    color: #142328 !important;
-    padding: 12px 35px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    margin-left: 1rem;
 }
 
 
@@ -166,7 +146,17 @@ body {
     text-align: center;
     color: white;
     padding: 20px;
-    transition: transform 0.1s ease-out;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.content-loading {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.content-loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero-title {
@@ -232,6 +222,7 @@ body {
     width: 25%;
     float: left;
     animation: slideLine 3s linear infinite;
+    will-change: transform;
 }
 
 .line-segment.green {
@@ -380,6 +371,7 @@ body {
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
+    will-change: transform;
 }
 
 .analytics-box {
@@ -392,9 +384,6 @@ body {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 2;
-}
-
-.analytics-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 3rem;
@@ -406,6 +395,7 @@ body {
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
     transform: translateY(30px);
+    will-change: transform, opacity;
 }
 
 .analytics-item:nth-child(1) {
@@ -445,6 +435,7 @@ body {
     background: white;
     border-radius: 2px;
     animation: expandWidth 1s ease-out 1s forwards;
+    will-change: width;
 }
 
 .analytics-label {
@@ -482,6 +473,19 @@ body {
     to {
         width: 60px;
     }
+}
+
+/* Optimize animations to use composited properties */
+.tour-card {
+    will-change: transform;
+}
+
+.tour-image img {
+    will-change: transform;
+}
+
+.card {
+    will-change: transform;
 }
 
 /* Popular Tours Section Styles */
@@ -5039,11 +5043,12 @@ body {
     justify-content: center;
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
     z-index: 999;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     text-decoration: none;
     cursor: pointer;
     overflow: visible;
     animation: shadowPulse 2s ease-in-out infinite;
+    will-change: transform, box-shadow;
 }
 
 .whatsapp-float::before,
@@ -5057,6 +5062,7 @@ body {
     opacity: 0.8;
     animation: wave 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    will-change: transform, opacity, box-shadow;
 }
 
 .whatsapp-float::before {
