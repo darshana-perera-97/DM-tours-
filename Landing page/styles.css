@@ -684,6 +684,7 @@ body {
 }
 
 @media (max-width: 768px) {
+
     /* Base font size reduction */
     body {
         font-size: 14px;
@@ -1046,6 +1047,7 @@ body {
 }
 
 @media (max-width: 480px) {
+
     /* Base font size reduction for small mobile */
     body {
         font-size: 13px;
@@ -2677,7 +2679,8 @@ body {
     line-height: 1.4;
 }
 
-.related-post-content h5 a, .related-post-content a {
+.related-post-content h5 a,
+.related-post-content a {
     color: #142328;
     text-decoration: none;
 }
@@ -4598,15 +4601,15 @@ body {
     .page-title {
         font-size: 2.5rem;
     }
-    
+
     .legal-document {
         padding: 40px;
     }
-    
+
     .legal-document h2 {
         font-size: 1.6rem;
     }
-    
+
     .legal-document h3 {
         font-size: 1.3rem;
     }
@@ -4616,33 +4619,33 @@ body {
     .page-header {
         padding: 100px 0 60px;
     }
-    
+
     .page-title {
         font-size: 2rem;
     }
-    
+
     .page-header .breadcrumb {
         padding: 12px 20px;
         max-width: 350px;
     }
-    
+
     .legal-content {
         padding: 60px 0;
     }
-    
+
     .legal-document {
         padding: 30px;
         margin: 0 15px;
     }
-    
+
     .legal-document h2 {
         font-size: 1.4rem;
     }
-    
+
     .legal-document h3 {
         font-size: 1.2rem;
     }
-    
+
     .legal-document p,
     .legal-document li {
         font-size: 0.95rem;
@@ -4653,42 +4656,42 @@ body {
     .page-header {
         padding: 80px 0 40px;
     }
-    
+
     .page-title {
         font-size: 1.8rem;
     }
-    
+
     .page-header .breadcrumb {
         padding: 10px 15px;
         max-width: 300px;
     }
-    
+
     .page-header .breadcrumb-item {
         font-size: 0.8rem;
     }
-    
+
     .legal-content {
         padding: 40px 0;
     }
-    
+
     .legal-document {
         padding: 25px;
         margin: 0 10px;
     }
-    
+
     .legal-document h2 {
         font-size: 1.3rem;
     }
-    
+
     .legal-document h3 {
         font-size: 1.1rem;
     }
-    
+
     .legal-document p,
     .legal-document li {
         font-size: 0.9rem;
     }
-    
+
     .legal-document .contact-info {
         padding: 20px;
     }
@@ -4768,7 +4771,7 @@ body {
     overflow: hidden;
 }
 
-.footer a{
+.footer a {
     text-decoration: none;
     color: #b0b0b0;
 }
@@ -4896,6 +4899,27 @@ body {
     color: #ffffff;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(6, 193, 103, 0.3);
+}
+
+.trustpilot-widget {
+    margin-top: 2rem;
+    text-align: left !important;
+    width: 80%;
+    max-width: 300px;
+    display: block;
+}
+
+.trustpilot-widget>* {
+    text-align: left !important;
+}
+
+.trustpilot-widget iframe,
+.trustpilot-widget div {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
 }
 
 .footer-newsletter {
@@ -5100,10 +5124,12 @@ body {
         opacity: 0.8;
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
     }
+
     50% {
         opacity: 0.4;
         box-shadow: 0 0 0 6px rgba(37, 211, 102, 0.3);
     }
+
     100% {
         transform: scale(1.6);
         opacity: 0;
@@ -5112,19 +5138,23 @@ body {
 }
 
 @keyframes shadowPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4),
-                    0 0 0 0 rgba(37, 211, 102, 0.4);
+            0 0 0 0 rgba(37, 211, 102, 0.4);
     }
+
     50% {
         box-shadow: 0 4px 16px rgba(37, 211, 102, 0.5),
-                    0 0 0 5px rgba(37, 211, 102, 0.1);
+            0 0 0 5px rgba(37, 211, 102, 0.1);
     }
 }
 
 /* Adjust back-to-top button position when WhatsApp button is present */
 .footer-back-to-top {
-    bottom: 100px; /* Positioned above WhatsApp button (60px button + 10px gap) */
+    bottom: 100px;
+    /* Positioned above WhatsApp button (60px button + 10px gap) */
 }
 
 /* Footer Responsive Design */
@@ -5144,6 +5174,7 @@ body {
     .footer-back-to-top {
         bottom: 85px;
     }
+
     .footer {
         padding: 3rem 0 0 0;
     }
@@ -5160,6 +5191,25 @@ body {
 
     .footer-social-links {
         justify-content: center;
+    }
+
+    .trustpilot-widget {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .trustpilot-widget>* {
+        text-align: center !important;
+    }
+
+    .trustpilot-widget iframe,
+    .trustpilot-widget div {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
     .footer-newsletter-form {
@@ -5232,8 +5282,31 @@ body {
         height: 40px;
     }
 
+    .trustpilot-widget {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .trustpilot-widget>* {
+        text-align: center !important;
+    }
+
+    .trustpilot-widget iframe,
+    .trustpilot-widget div {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
     .footer-bottom-links {
         gap: 1rem;
         font-size: 0.8rem;
     }
+}
+
+.tp-widget-wrapper {
+    text-align: left !important;
 }
