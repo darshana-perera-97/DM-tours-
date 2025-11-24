@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .job-table-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .job-table-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .job-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .job-table th,
+        .job-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .job-table th {
+            background-color: #f0f0f0;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .job-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .job-table a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .job-table a:hover {
+            border-color: #333;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+            background-color: white;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .submit-btn {
+            background-color: #333;
+            color: white;
+            padding: 12px 30px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #555;
+        }
+
+        .bill-template {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            width: 850px;
+            background-color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .bill-branding img {
+            width: 100%;
+            display: block;
+        }
+
+        .bill-body {
+            padding: 40px 50px 50px;
+        }
+
+        .invoice-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .invoice-header h1 {
+            font-size: 36px;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .invoice-datetime {
+            margin-top: 8px;
+            display: flex;
+            gap: 16px;
+            color: #777;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .invoice-datetime span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .invoice-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .meta-section {
+            flex: 1;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 6px;
+            padding: 15px 18px;
+        }
+
+        .meta-section h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .meta-section h4:not(:first-child) {
+            margin-top: 12px;
+        }
+
+        .meta-section p {
+            margin: 0;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .invoice-table th,
+        .invoice-table td {
+            padding: 16px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: left;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .invoice-table thead th {
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #999;
+        }
+
+        .invoice-table th.text-right {
+            text-align: right;
+        }
+
+        .invoice-table td.text-right {
+            text-align: right;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .invoice-total {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .invoice-total span {
+            display: block;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 6px;
+            text-align: right;
+        }
+
+        .invoice-total strong {
+            font-size: 24px;
+            color: #333;
+            text-align: right;
+            display: block;
+        }
+
+        .bill-amount {
+            font-size: 28px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .bill-notes {
+            padding: 20px;
+            background: #fafafa;
+            border: 1px dashed #dcdcdc;
+            border-radius: 6px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .bill-notes h4 {
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bill Generator</h1>
+        <div class="content">
+            <div class="job-table-wrapper">
+                <p class="job-table-title">Job Opportunity Snapshot</p>
+                <table class="job-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Search Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Java Software Engineer</td>
+                            <td>Crossover</td>
+                            <td>Colombo • via Crossover</td>
+                            <td><a href="https://www.crossover.com/jobs/java-developer" target="_blank" rel="noopener">View Role</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="guestName">Guest Name</label>
+                    <input type="text" id="guestName" name="guestName" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="paymentAmount">Payment Amount</label>
+                        <input type="number" id="paymentAmount" name="paymentAmount" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select id="currency" name="currency" required>
+                            <option value="LKR" selected>Sri Lankan Rupee (LKR)</option>
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="JPY">Japanese Yen (JPY)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentDescription">Payment Description</label>
+                    <textarea id="paymentDescription" name="paymentDescription" rows="3" placeholder="e.g., Deluxe room stay, airport transfer, etc." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="cash">Cash</option>
+                        <option value="bank-transfer">Bank Transfer</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="check">Check</option>
+                        <option value="mobile-payment">Mobile Payment</option>
+                        <option value="online-payment">Online Payment</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <select id="state" name="state" required>
+                        <option value="">Select State</option>
+                        <option value="payment-received">Payment Received</option>
+                        <option value="payment-pending">Payment Pending</option>
+                        <option value="payment-failed">Payment Failed</option>
+                        <option value="refunded">Refunded</option>
+                        <option value="partially-paid">Partially Paid</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Generate Bill</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hidden Bill Template -->
+    <div id="billTemplate" class="bill-template">
+        <div class="bill-branding bill-branding--top">
+            <img src="top.png" alt="Invoice header background">
+        </div>
+        <div class="bill-body">
+            <div class="invoice-header">
+                <div class="invoice-title">
+                    <h1>Invoice</h1>
+                    <div class="invoice-datetime">
+                        <span id="billDateHeader">-</span>
+                        <span id="billTimeHeader">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="invoice-meta">
+                <div class="meta-section">
+                    <h4>Billed To</h4>
+                    <p id="billGuestName">-</p>
+                </div>
+                <div class="meta-section">
+                    <h4>Payment Status</h4>
+                    <p id="billState">-</p>
+                </div>
+            </div>
+
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Payment Method</th>
+                        <th class="text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="billDescription">Guest stay payment</td>
+                        <td id="billMethod">-</td>
+                        <td class="text-right" id="billAmount">$0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="invoice-total">
+                <div>
+                    <span>Total Due</span>
+                    <strong class="bill-amount" id="billTotal">$0.00</strong>
+                </div>
+            </div>
+
+            <div class="bill-notes">
+                <h4>Notes</h4>
+                <p id="billNotes">Payment received. Thank you!</p>
+            </div>
+        </div>
+        <div class="bill-branding bill-branding--bottom">
+            <img src="bottom.png" alt="Invoice footer background">
+        </div>
+    </div>
+
+    <!-- html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        const currencyMap = {
+            LKR: { locale: 'en-LK', currency: 'LKR', label: 'Sri Lankan Rupee', decimals: 2 },
+            USD: { locale: 'en-US', currency: 'USD', label: 'US Dollar', decimals: 2 },
+            JPY: { locale: 'ja-JP', currency: 'JPY', label: 'Japanese Yen', decimals: 0 },
+            INR: { locale: 'en-IN', currency: 'INR', label: 'Indian Rupee', decimals: 2 }
+        };
+
+        // Format payment method for display
+        function formatPaymentMethod(value) {
+            const methods = {
+                'cash': 'Cash',
+                'bank-transfer': 'Bank Transfer',
+                'credit-card': 'Credit Card',
+                'debit-card': 'Debit Card',
+                'check': 'Check',
+                'mobile-payment': 'Mobile Payment',
+                'online-payment': 'Online Payment',
+                'other': 'Other'
+            };
+            return methods[value] || value;
+        }
+
+        // Format state for display
+        function formatState(value) {
+            const states = {
+                'payment-received': 'Payment Received',
+                'payment-pending': 'Payment Pending',
+                'payment-failed': 'Payment Failed',
+                'refunded': 'Refunded',
+                'partially-paid': 'Partially Paid',
+                'cancelled': 'Cancelled'
+            };
+            return states[value] || value;
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function formatTime(timeString) {
+            if (!timeString) return '-';
+            const [hours, minutes] = timeString.split(':').map(Number);
+            const period = hours >= 12 ? 'PM' : 'AM';
+            const normalized = hours % 12 || 12;
+            return `${normalized}:${minutes.toString().padStart(2, '0')} ${period}`;
+        }
+
+        function formatCurrency(amount, currencyCode = 'LKR') {
+            const value = isNaN(amount) ? 0 : amount;
+            const meta = currencyMap[currencyCode] || currencyMap.LKR;
+            return new Intl.NumberFormat(meta.locale, {
+                style: 'currency',
+                currency: meta.currency,
+                minimumFractionDigits: meta.decimals,
+                maximumFractionDigits: meta.decimals
+            }).format(value);
+        }
+
+        function generateInvoiceNumber(dateString, timeString) {
+            const baseDate = dateString ? new Date(`${dateString}T${timeString || '00:00'}`) : new Date();
+            const pad = (n) => n.toString().padStart(2, '0');
+            return `INV-${baseDate.getFullYear()}${pad(baseDate.getMonth() + 1)}${pad(baseDate.getDate())}-${pad(baseDate.getHours())}${pad(baseDate.getMinutes())}`;
+        }
+
+        function buildNotes(stateText, methodText, currencyCode) {
+            if (!stateText && !methodText && !currencyCode) {
+                return 'Thank you for choosing DM Tours.';
+            }
+            const currencyLabel = currencyMap[currencyCode]?.label || currencyCode || '';
+            const methodPart = methodText ? ` via ${methodText}` : '';
+            const currencyPart = currencyLabel ? ` · Currency: ${currencyLabel}` : '';
+            return `${stateText || 'Payment update'}${methodPart}${currencyPart}`.trim();
+        }
+
+        // Download image
+        function downloadImage(dataUrl, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                guestName: document.getElementById('guestName').value,
+                paymentAmount: parseFloat(document.getElementById('paymentAmount').value),
+                paymentMethod: document.getElementById('paymentMethod').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                state: document.getElementById('state').value,
+                paymentDescription: document.getElementById('paymentDescription').value,
+                currency: document.getElementById('currency').value
+            };
+
+            const methodText = formatPaymentMethod(formData.paymentMethod);
+            const stateText = formatState(formData.state);
+            const formattedAmount = formatCurrency(formData.paymentAmount, formData.currency);
+            const formattedDate = formatDate(formData.date);
+            const formattedTime = formatTime(formData.time);
+            const invoiceNumber = generateInvoiceNumber(formData.date, formData.time);
+
+            // Populate invoice template
+            const descriptionText = formData.paymentDescription.trim() || 'Guest stay payment';
+
+            document.getElementById('billGuestName').textContent = formData.guestName;
+            document.getElementById('billState').textContent = stateText;
+            document.getElementById('billDateHeader').textContent = formattedDate;
+            document.getElementById('billTimeHeader').textContent = formattedTime;
+            document.getElementById('billMethod').textContent = methodText;
+            document.getElementById('billDescription').textContent = descriptionText;
+            document.getElementById('billAmount').textContent = formattedAmount;
+            document.getElementById('billTotal').textContent = formattedAmount;
+            document.getElementById('billNotes').textContent = buildNotes(stateText, methodText, formData.currency);
+
+            // Generate bill as image
+            const billElement = document.getElementById('billTemplate');
+            
+            html2canvas(billElement, {
+                backgroundColor: '#ffffff',
+                scale: 2,
+                logging: false,
+                useCORS: true
+            }).then(function(canvas) {
+                // Convert canvas to JPG
+                const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                
+                // Generate filename
+                const safeGuestName = formData.guestName.trim().length ? formData.guestName.replace(/\s+/g, '_') : 'Guest';
+                const filename = `${invoiceNumber}_${safeGuestName}.jpg`;
+                
+                // Download the image
+                downloadImage(imgData, filename);
+            }).catch(function(error) {
+                console.error('Error generating bill:', error);
+                alert('Error generating bill. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
+
