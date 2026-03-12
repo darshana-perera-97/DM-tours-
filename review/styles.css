@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #fafafa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.thank-you-container {
+    width: 100%;
+    max-width: 600px;
+    animation: fadeIn 0.6s ease-in;
+}
+
+.thank-you-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 60px 50px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-wrapper {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkmark {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2.5;
+    stroke: #1a1a1a;
+    stroke-miterlimit: 10;
+    animation: scaleIn 0.5s ease-out 0.3s both;
+}
+
+.checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2.5;
+    stroke-miterlimit: 10;
+    stroke: #1a1a1a;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.thank-you-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    animation: slideUp 0.6s ease-out 0.4s both;
+}
+
+.thank-you-message {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    font-weight: 400;
+    animation: slideUp 0.6s ease-out 0.5s both;
+}
+
+.redirect-message {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin-bottom: 24px;
+    font-weight: 400;
+    animation: slideUp 0.6s ease-out 0.6s both;
+}
+
+#countdown {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 1.1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 2px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    animation: slideUp 0.6s ease-out 0.7s both;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #1a1a1a;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+    animation: progressAnimation 5s linear forwards;
+}
+
+.review-button {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #1a1a1a;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: 1px solid #1a1a1a;
+    animation: slideUp 0.6s ease-out 0.8s both;
+}
+
+.review-button:hover {
+    background: #2a2a2a;
+    border-color: #2a2a2a;
+    transform: translateY(-1px);
+}
+
+.review-button:active {
+    transform: translateY(0);
+    background: #1a1a1a;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes progressAnimation {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .thank-you-content {
+        padding: 48px 32px;
+        border-radius: 12px;
+    }
+
+    .thank-you-title {
+        font-size: 1.875rem;
+    }
+
+    .thank-you-message {
+        font-size: 0.95rem;
+    }
+
+    .checkmark {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    .thank-you-content {
+        padding: 40px 24px;
+        border-radius: 12px;
+    }
+
+    .thank-you-title {
+        font-size: 1.625rem;
+    }
+
+    .thank-you-message {
+        font-size: 0.9rem;
+        margin-bottom: 28px;
+    }
+
+    .redirect-message {
+        font-size: 0.875rem;
+    }
+
+    .checkmark {
+        width: 56px;
+        height: 56px;
+    }
+
+    .review-button {
+        padding: 11px 24px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .thank-you-content {
+        padding: 36px 20px;
+    }
+
+    .thank-you-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .thank-you-content {
+        padding: 32px 40px;
+    }
+
+    .icon-wrapper {
+        margin-bottom: 16px;
+    }
+
+    .checkmark {
+        width: 56px;
+        height: 56px;
+    }
+
+    .thank-you-title {
+        font-size: 1.625rem;
+        margin-bottom: 12px;
+    }
+
+    .thank-you-message {
+        margin-bottom: 20px;
+    }
+}
+
