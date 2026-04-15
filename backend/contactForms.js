@@ -178,10 +178,6 @@ async function waitForClientReady(maxWaitTime = WHATSAPP_READY_WAIT_MS) {
   if (isClientReady) {
     return true;
   }
-  if (isClientAuthenticated) {
-    console.log('ℹ️  WhatsApp client is authenticated; proceeding without ready event.');
-    return true;
-  }
 
   console.log('⏳ Waiting for WhatsApp client to be ready...');
   const startTime = Date.now();
@@ -191,10 +187,6 @@ async function waitForClientReady(maxWaitTime = WHATSAPP_READY_WAIT_MS) {
       if (isClientReady) {
         clearInterval(checkInterval);
         console.log('✅ WhatsApp client is now ready!');
-        resolve(true);
-      } else if (isClientAuthenticated) {
-        clearInterval(checkInterval);
-        console.log('ℹ️  WhatsApp client is authenticated; proceeding without ready event.');
         resolve(true);
       } else if (Date.now() - startTime > maxWaitTime) {
         clearInterval(checkInterval);
@@ -299,6 +291,12 @@ async function sendMessageToRecipients(recipientNumbers, whatsappMessage) {
   for (const recipientNumber of recipientNumbers) {
     try {
       const chatId = recipientNumber + '@c.us';
+      const isRegistered = await client.isRegisteredUser(chatId);
+      if (!isRegistered) {
+        console.warn(`⚠️  Skipping ${recipientNumber}: number is not a registered WhatsApp account.`);
+        continue;
+      }
+
       console.log(`Attempting to send WhatsApp message to: ${recipientNumber}`);
       console.log(`Chat ID: ${chatId}`);
       await client.sendMessage(chatId, whatsappMessage);
