@@ -8,6 +8,7 @@ const app = express();
 const PORT = 3057;
 const TOUR_CONTACT_RECIPIENTS = ['94771461925', '94778808689'];
 const SECURITY_CONTACT_RECIPIENTS = ['94771461925','9470552766'];
+const WHATSAPP_RECONNECT_INTERVAL_MS = 2 * 60 * 60 * 1000; // 2 hours
 
 // reCAPTCHA secret key from environment variables
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
@@ -83,11 +84,13 @@ client.on('qr', qr => {
 
 // Track client ready state
 let isClientReady = false;
+let isReconnecting = false;
 
 client.on('ready', () => {
   console.log('WhatsApp Client is ready!');
   console.log('Client info:', client.info);
   isClientReady = true;
+  isReconnecting = false;
 });
 
 client.on('authenticated', () => {
@@ -98,7 +101,45 @@ client.on('auth_failure', msg => {
   console.error('Authentication failure', msg);
 });
 
+client.on('disconnected', (reason) => {
+  isClientReady = false;
+  console.warn(`⚠️  WhatsApp client disconnected: ${reason}`);
+});
+
+async function reconnectWhatsAppClient(triggerReason = 'scheduled reconnect') {
+  if (isReconnecting) {
+    console.log(`⏭️  Skipping reconnect (${triggerReason}) because another reconnect is in progress.`);
+    return;
+  }
+
+  isReconnecting = true;
+  isClientReady = false;
+  console.log(`🔄 Starting WhatsApp reconnect (${triggerReason})...`);
+
+  try {
+    await client.destroy();
+    console.log('✅ Existing WhatsApp client session closed.');
+  } catch (destroyError) {
+    console.warn('⚠️  Could not cleanly destroy WhatsApp client before reconnect:', destroyError.message);
+  }
+
+  try {
+    await client.initialize();
+    console.log('✅ WhatsApp client initialize() called successfully.');
+  } catch (initError) {
+    isReconnecting = false;
+    console.error('❌ Failed to initialize WhatsApp client during reconnect:', initError.message);
+  }
+}
+
+function startScheduledReconnect() {
+  setInterval(() => {
+    reconnectWhatsAppClient('2-hour keep-alive reconnect');
+  }, WHATSAPP_RECONNECT_INTERVAL_MS);
+}
+
 client.initialize();
+startScheduledReconnect();
 
 // Helper function to wait for client to be ready
 async function waitForClientReady(maxWaitTime = 30000) {
