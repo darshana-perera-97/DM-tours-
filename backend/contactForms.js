@@ -1,6 +1,8 @@
 require('dotenv').config(); const express = require('express');
 
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
@@ -9,6 +11,9 @@ const PORT = 3057;
 const TOUR_CONTACT_RECIPIENTS = ['94771461925', '94778808689'];
 const SECURITY_CONTACT_RECIPIENTS = ['94771461925','9470552766'];
 const WHATSAPP_RECONNECT_INTERVAL_MS = 2 * 60 * 60 * 1000; // 2 hours
+const WHATSAPP_READY_WAIT_MS = 90 * 1000; // 90 seconds
+const QUEUE_PROCESS_INTERVAL_MS = 30 * 1000; // 30 seconds
+const CUSTOM_QUEUE_FILE_PATH = path.join(__dirname, 'custom-contact-queue.json');
 
 // reCAPTCHA secret key from environment variables
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
@@ -84,25 +89,31 @@ client.on('qr', qr => {
 
 // Track client ready state
 let isClientReady = false;
+let isClientAuthenticated = false;
 let isReconnecting = false;
+let isQueueProcessing = false;
 
 client.on('ready', () => {
   console.log('WhatsApp Client is ready!');
   console.log('Client info:', client.info);
   isClientReady = true;
   isReconnecting = false;
+  processCustomQueue();
 });
 
 client.on('authenticated', () => {
   console.log('WhatsApp Client authenticated!');
+  isClientAuthenticated = true;
 });
 
 client.on('auth_failure', msg => {
   console.error('Authentication failure', msg);
+  isClientAuthenticated = false;
 });
 
 client.on('disconnected', (reason) => {
   isClientReady = false;
+  isClientAuthenticated = false;
   console.warn(`⚠️  WhatsApp client disconnected: ${reason}`);
 });
 
@@ -114,6 +125,7 @@ async function reconnectWhatsAppClient(triggerReason = 'scheduled reconnect') {
 
   isReconnecting = true;
   isClientReady = false;
+  isClientAuthenticated = false;
   console.log(`🔄 Starting WhatsApp reconnect (${triggerReason})...`);
 
   try {
@@ -138,12 +150,36 @@ function startScheduledReconnect() {
   }, WHATSAPP_RECONNECT_INTERVAL_MS);
 }
 
-client.initialize();
+function startQueueProcessor() {
+  setInterval(() => {
+    processCustomQueue();
+  }, QUEUE_PROCESS_INTERVAL_MS);
+}
+
+async function startWhatsAppClientOnBoot() {
+  console.log('🚀 Starting WhatsApp client on server boot...');
+  try {
+    await client.initialize();
+    console.log('✅ WhatsApp client initialize() triggered on startup.');
+  } catch (startupError) {
+    console.error('❌ Initial WhatsApp startup failed. Retrying once in 10 seconds:', startupError.message);
+    setTimeout(() => {
+      reconnectWhatsAppClient('startup retry after init failure');
+    }, 10000);
+  }
+}
+
+startWhatsAppClientOnBoot();
 startScheduledReconnect();
+startQueueProcessor();
 
 // Helper function to wait for client to be ready
-async function waitForClientReady(maxWaitTime = 30000) {
-  if (isClientReady && client.info) {
+async function waitForClientReady(maxWaitTime = WHATSAPP_READY_WAIT_MS) {
+  if (isClientReady) {
+    return true;
+  }
+  if (isClientAuthenticated) {
+    console.log('ℹ️  WhatsApp client is authenticated; proceeding without ready event.');
     return true;
   }
 
@@ -152,9 +188,13 @@ async function waitForClientReady(maxWaitTime = 30000) {
 
   return new Promise((resolve) => {
     const checkInterval = setInterval(() => {
-      if (isClientReady && client.info) {
+      if (isClientReady) {
         clearInterval(checkInterval);
         console.log('✅ WhatsApp client is now ready!');
+        resolve(true);
+      } else if (isClientAuthenticated) {
+        clearInterval(checkInterval);
+        console.log('ℹ️  WhatsApp client is authenticated; proceeding without ready event.');
         resolve(true);
       } else if (Date.now() - startTime > maxWaitTime) {
         clearInterval(checkInterval);
@@ -217,6 +257,96 @@ function formatJsonPayloadMessage(payload) {
   return `*📨 JSON Payload Submission*\n\n\`\`\`json\n${JSON.stringify(payload, null, 2)}\n\`\`\``;
 }
 
+function ensureCustomQueueFile() {
+  if (!fs.existsSync(CUSTOM_QUEUE_FILE_PATH)) {
+    fs.writeFileSync(CUSTOM_QUEUE_FILE_PATH, '[]', 'utf8');
+  }
+}
+
+function readCustomQueue() {
+  ensureCustomQueueFile();
+  try {
+    const raw = fs.readFileSync(CUSTOM_QUEUE_FILE_PATH, 'utf8');
+    const parsed = JSON.parse(raw || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.error('❌ Failed to read custom queue file. Resetting queue file:', error.message);
+    fs.writeFileSync(CUSTOM_QUEUE_FILE_PATH, '[]', 'utf8');
+    return [];
+  }
+}
+
+function writeCustomQueue(queueItems) {
+  fs.writeFileSync(CUSTOM_QUEUE_FILE_PATH, JSON.stringify(queueItems, null, 2), 'utf8');
+}
+
+function enqueueCustomPayload(recipientNumbers, payload) {
+  const queue = readCustomQueue();
+  const queueItem = {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
+    createdAt: new Date().toISOString(),
+    recipientNumbers,
+    payload
+  };
+  queue.push(queueItem);
+  writeCustomQueue(queue);
+  return queueItem;
+}
+
+async function sendMessageToRecipients(recipientNumbers, whatsappMessage) {
+  let sentCount = 0;
+
+  for (const recipientNumber of recipientNumbers) {
+    try {
+      const chatId = recipientNumber + '@c.us';
+      console.log(`Attempting to send WhatsApp message to: ${recipientNumber}`);
+      console.log(`Chat ID: ${chatId}`);
+      await client.sendMessage(chatId, whatsappMessage);
+      console.log(`✅ WhatsApp message sent successfully to ${recipientNumber}`);
+      sentCount += 1;
+    } catch (whatsappError) {
+      console.error(`❌ Error sending WhatsApp message to ${recipientNumber}:`, whatsappError);
+      console.error('Error details:', whatsappError.message);
+    }
+  }
+
+  return sentCount;
+}
+
+async function processCustomQueue() {
+  if (isQueueProcessing) {
+    return;
+  }
+
+  isQueueProcessing = true;
+  try {
+    const queue = readCustomQueue();
+    if (queue.length === 0) {
+      return;
+    }
+
+    const clientReady = await waitForClientReady(5000);
+    if (!clientReady) {
+      return;
+    }
+
+    const remainingItems = [];
+    for (const item of queue) {
+      const message = formatJsonPayloadMessage(item.payload);
+      const sentCount = await sendMessageToRecipients(item.recipientNumbers, message);
+
+      if (sentCount !== item.recipientNumbers.length) {
+        // Keep item in queue if any recipient failed
+        remainingItems.push(item);
+      }
+    }
+
+    writeCustomQueue(remainingItems);
+  } finally {
+    isQueueProcessing = false;
+  }
+}
+
 app.get('/', (req, res) => {
   res.send('DM Tours API is running 🚀');
 });
@@ -250,7 +380,7 @@ async function handleContactFormSubmission(req, res, options) {
   const whatsappMessage = formatContactFormMessage(contactData);
 
   // Wait for client to be ready before sending messages
-  const clientReady = await waitForClientReady(30000); // Wait up to 30 seconds
+  const clientReady = await waitForClientReady(WHATSAPP_READY_WAIT_MS);
 
   if (!clientReady) {
     console.warn('⚠️  WhatsApp client is not ready. Messages will not be sent.');
@@ -320,38 +450,19 @@ app.post('/custom/contactForm', async (req, res) => {
     });
   }
 
-  const whatsappMessage = formatJsonPayloadMessage(payload);
-
   console.log('\n========== CUSTOM CONTACT FORM SUBMISSION ==========');
   console.log('Recipient Numbers:', sanitizedRecipientNumbers);
   console.log('Payload:');
   console.log(JSON.stringify(payload, null, 2));
   console.log('===========================================\n');
 
-  const clientReady = await waitForClientReady(30000);
-
-  if (!clientReady) {
-    console.warn('⚠️  WhatsApp client is not ready. Messages will not be sent.');
-  } else {
-    for (const recipientNumber of sanitizedRecipientNumbers) {
-      try {
-        const chatId = recipientNumber + '@c.us';
-
-        console.log(`Attempting to send WhatsApp message to: ${recipientNumber}`);
-        console.log(`Chat ID: ${chatId}`);
-
-        await client.sendMessage(chatId, whatsappMessage);
-        console.log(`✅ WhatsApp message sent successfully to ${recipientNumber}`);
-      } catch (whatsappError) {
-        console.error(`❌ Error sending WhatsApp message to ${recipientNumber}:`, whatsappError);
-        console.error('Error details:', whatsappError.message);
-      }
-    }
-  }
+  const queueItem = enqueueCustomPayload(sanitizedRecipientNumbers, payload);
+  processCustomQueue();
 
   return res.status(200).json({
     success: true,
-    message: 'Custom contact payload submitted successfully',
+    message: 'Custom contact payload queued successfully',
+    queueId: queueItem.id,
     recipientNumbers: sanitizedRecipientNumbers,
     data: payload
   });
