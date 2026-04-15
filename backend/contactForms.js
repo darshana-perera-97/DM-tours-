@@ -92,6 +92,7 @@ let isClientReady = false;
 let isClientAuthenticated = false;
 let isReconnecting = false;
 let isQueueProcessing = false;
+let activeReadyWaitPromise = null;
 
 client.on('ready', () => {
   console.log('WhatsApp Client is ready!');
@@ -178,23 +179,45 @@ async function waitForClientReady(maxWaitTime = WHATSAPP_READY_WAIT_MS) {
   if (isClientReady) {
     return true;
   }
+  if (activeReadyWaitPromise) {
+    return activeReadyWaitPromise;
+  }
 
   console.log('⏳ Waiting for WhatsApp client to be ready...');
   const startTime = Date.now();
 
-  return new Promise((resolve) => {
+  activeReadyWaitPromise = new Promise((resolve) => {
     const checkInterval = setInterval(() => {
       if (isClientReady) {
         clearInterval(checkInterval);
         console.log('✅ WhatsApp client is now ready!');
+        activeReadyWaitPromise = null;
         resolve(true);
+      } else if (isClientAuthenticated) {
+        // Some versions occasionally miss the "ready" event even though state is connected.
+        client.getState()
+          .then((state) => {
+            if (state === 'CONNECTED') {
+              clearInterval(checkInterval);
+              isClientReady = true;
+              console.log('✅ WhatsApp state is CONNECTED; treating client as ready.');
+              activeReadyWaitPromise = null;
+              resolve(true);
+            }
+          })
+          .catch(() => {
+            // Ignore state read errors while waiting; next tick retries.
+          });
       } else if (Date.now() - startTime > maxWaitTime) {
         clearInterval(checkInterval);
         console.warn('⚠️  Timeout waiting for WhatsApp client to be ready');
+        activeReadyWaitPromise = null;
         resolve(false);
       }
     }, 500); // Check every 500ms
   });
+
+  return activeReadyWaitPromise;
 }
 
 // Helper function to format contact form message
@@ -285,30 +308,49 @@ function enqueueCustomPayload(recipientNumbers, payload) {
   return queueItem;
 }
 
+function normalizeRecipientNumber(number) {
+  return String(number).replace(/\D/g, '');
+}
+
 async function sendMessageToRecipients(recipientNumbers, whatsappMessage) {
   let sentCount = 0;
+  const failedRecipients = [];
 
   for (const recipientNumber of recipientNumbers) {
     try {
-      const chatId = recipientNumber + '@c.us';
-      const isRegistered = await client.isRegisteredUser(chatId);
-      if (!isRegistered) {
-        console.warn(`⚠️  Skipping ${recipientNumber}: number is not a registered WhatsApp account.`);
+      const normalizedNumber = normalizeRecipientNumber(recipientNumber);
+      if (!normalizedNumber) {
+        console.warn(`⚠️  Skipping invalid recipient value: ${recipientNumber}`);
         continue;
       }
 
-      console.log(`Attempting to send WhatsApp message to: ${recipientNumber}`);
+      const chatId = normalizedNumber + '@c.us';
+      const isRegistered = await client.isRegisteredUser(chatId);
+      if (!isRegistered) {
+        console.warn(`⚠️  Skipping ${normalizedNumber}: number is not a registered WhatsApp account.`);
+        continue;
+      }
+
+      console.log(`Attempting to send WhatsApp message to: ${normalizedNumber}`);
       console.log(`Chat ID: ${chatId}`);
       await client.sendMessage(chatId, whatsappMessage);
-      console.log(`✅ WhatsApp message sent successfully to ${recipientNumber}`);
+      console.log(`✅ WhatsApp message sent successfully to ${normalizedNumber}`);
       sentCount += 1;
     } catch (whatsappError) {
       console.error(`❌ Error sending WhatsApp message to ${recipientNumber}:`, whatsappError);
       console.error('Error details:', whatsappError.message);
+      if (String(whatsappError.message || '').includes('No LID for user')) {
+        console.warn(`⚠️  Marking ${recipientNumber} as invalid (No LID for user).`);
+        continue;
+      }
+      failedRecipients.push(recipientNumber);
     }
   }
 
-  return sentCount;
+  return {
+    sentCount,
+    failedRecipients
+  };
 }
 
 async function processCustomQueue() {
@@ -331,11 +373,14 @@ async function processCustomQueue() {
     const remainingItems = [];
     for (const item of queue) {
       const message = formatJsonPayloadMessage(item.payload);
-      const sentCount = await sendMessageToRecipients(item.recipientNumbers, message);
+      const sendResult = await sendMessageToRecipients(item.recipientNumbers, message);
 
-      if (sentCount !== item.recipientNumbers.length) {
-        // Keep item in queue if any recipient failed
-        remainingItems.push(item);
+      if (sendResult.failedRecipients.length > 0) {
+        // Keep only transiently failed recipients for retry.
+        remainingItems.push({
+          ...item,
+          recipientNumbers: sendResult.failedRecipients
+        });
       }
     }
 
@@ -386,22 +431,7 @@ async function handleContactFormSubmission(req, res, options) {
   } else if (!recipientNumbers || recipientNumbers.length === 0) {
     console.warn(`⚠️  No WhatsApp recipients configured for ${logBanner}.`);
   } else {
-    // Send message to all recipients
-    for (const recipientNumber of recipientNumbers) {
-      try {
-        const chatId = recipientNumber + '@c.us';
-
-        console.log(`Attempting to send WhatsApp message to: ${recipientNumber}`);
-        console.log(`Chat ID: ${chatId}`);
-
-        await client.sendMessage(chatId, whatsappMessage);
-        console.log(`✅ WhatsApp message sent successfully to ${recipientNumber}`);
-      } catch (whatsappError) {
-        console.error(`❌ Error sending WhatsApp message to ${recipientNumber}:`, whatsappError);
-        console.error('Error details:', whatsappError.message);
-        // Don't fail the request if WhatsApp fails
-      }
-    }
+    await sendMessageToRecipients(recipientNumbers, whatsappMessage);
   }
 
   const { _inquiryTitle: _t, ...responseData } = contactData;
@@ -438,7 +468,7 @@ app.post('/custom/contactForm', async (req, res) => {
   const payload = req.body?.payload ?? req.body?.load ?? {};
 
   const sanitizedRecipientNumbers = recipientNumbers
-    .map((number) => String(number).trim())
+    .map((number) => normalizeRecipientNumber(number))
     .filter(Boolean);
 
   if (sanitizedRecipientNumbers.length === 0) {
