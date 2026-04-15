@@ -1,4 +1,4 @@
-POST /custom/contactForm
+POST https://www.api.dmtours.lk/custom/contactForm
 
 {
   "recipientNumbers": ["94771461925", "94778808689"],
