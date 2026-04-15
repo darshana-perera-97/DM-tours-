@@ -14,6 +14,8 @@ const WHATSAPP_RECONNECT_INTERVAL_MS = 2 * 60 * 60 * 1000; // 2 hours
 const WHATSAPP_READY_WAIT_MS = 90 * 1000; // 90 seconds
 const QUEUE_PROCESS_INTERVAL_MS = 30 * 1000; // 30 seconds
 const CUSTOM_QUEUE_FILE_PATH = path.join(__dirname, 'custom-contact-queue.json');
+const QUEUE_MAX_ATTEMPTS = 5;
+const QUEUE_RETRY_DELAY_MS = 60 * 1000; // 1 minute
 
 // reCAPTCHA secret key from environment variables
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
@@ -301,7 +303,9 @@ function enqueueCustomPayload(recipientNumbers, payload) {
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
     createdAt: new Date().toISOString(),
     recipientNumbers,
-    payload
+    payload,
+    attempts: 0,
+    nextAttemptAt: new Date().toISOString()
   };
   queue.push(queueItem);
   writeCustomQueue(queue);
@@ -310,6 +314,11 @@ function enqueueCustomPayload(recipientNumbers, payload) {
 
 function normalizeRecipientNumber(number) {
   return String(number).replace(/\D/g, '');
+}
+
+function isPermanentRecipientError(errorMessage) {
+  const message = String(errorMessage || '');
+  return message.includes('No LID for user') || message.includes("reading 'markedUnread'");
 }
 
 async function sendMessageToRecipients(recipientNumbers, whatsappMessage) {
@@ -333,14 +342,14 @@ async function sendMessageToRecipients(recipientNumbers, whatsappMessage) {
 
       console.log(`Attempting to send WhatsApp message to: ${normalizedNumber}`);
       console.log(`Chat ID: ${chatId}`);
-      await client.sendMessage(chatId, whatsappMessage);
+      await client.sendMessage(chatId, whatsappMessage, { sendSeen: false });
       console.log(`✅ WhatsApp message sent successfully to ${normalizedNumber}`);
       sentCount += 1;
     } catch (whatsappError) {
       console.error(`❌ Error sending WhatsApp message to ${recipientNumber}:`, whatsappError);
       console.error('Error details:', whatsappError.message);
-      if (String(whatsappError.message || '').includes('No LID for user')) {
-        console.warn(`⚠️  Marking ${recipientNumber} as invalid (No LID for user).`);
+      if (isPermanentRecipientError(whatsappError.message)) {
+        console.warn(`⚠️  Marking ${recipientNumber} as invalid due to permanent error.`);
         continue;
       }
       failedRecipients.push(recipientNumber);
@@ -370,17 +379,31 @@ async function processCustomQueue() {
       return;
     }
 
+    const now = Date.now();
     const remainingItems = [];
     for (const item of queue) {
+      const nextAttemptAtMs = new Date(item.nextAttemptAt || item.createdAt || Date.now()).getTime();
+      if (nextAttemptAtMs > now) {
+        remainingItems.push(item);
+        continue;
+      }
+
       const message = formatJsonPayloadMessage(item.payload);
       const sendResult = await sendMessageToRecipients(item.recipientNumbers, message);
 
       if (sendResult.failedRecipients.length > 0) {
-        // Keep only transiently failed recipients for retry.
-        remainingItems.push({
-          ...item,
-          recipientNumbers: sendResult.failedRecipients
-        });
+        const nextAttempts = (item.attempts || 0) + 1;
+        if (nextAttempts >= QUEUE_MAX_ATTEMPTS) {
+          console.warn(`⚠️  Dropping queue item ${item.id} after ${nextAttempts} failed attempts.`);
+        } else {
+          // Keep only transiently failed recipients for retry with backoff.
+          remainingItems.push({
+            ...item,
+            recipientNumbers: sendResult.failedRecipients,
+            attempts: nextAttempts,
+            nextAttemptAt: new Date(Date.now() + QUEUE_RETRY_DELAY_MS * nextAttempts).toISOString()
+          });
+        }
       }
     }
 
