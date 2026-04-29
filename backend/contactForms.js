@@ -9,7 +9,7 @@ const qrcode = require('qrcode-terminal');
 const app = express();
 const PORT = 3057;
 const TOUR_CONTACT_RECIPIENTS = ['94771461925', '94778808689'];
-const SECURITY_CONTACT_RECIPIENTS = ['94771461925','9470552766'];
+const SECURITY_CONTACT_RECIPIENTS = ['94771461925','94764030668'];
 const WHATSAPP_RECONNECT_INTERVAL_MS = 2 * 60 * 60 * 1000; // 2 hours
 const WHATSAPP_READY_WAIT_MS = 90 * 1000; // 90 seconds
 const QUEUE_PROCESS_INTERVAL_MS = 30 * 1000; // 30 seconds
@@ -274,6 +274,36 @@ function formatJsonPayloadMessage(payload) {
   return `*📨 JSON Payload Submission*\n\n\`\`\`json\n${JSON.stringify(payload, null, 2)}\n\`\`\``;
 }
 
+function formatSecurityContactMessage(formData) {
+  const { timestamp, name, email, contact_number, message } = formData;
+
+  let formattedDate = timestamp || new Date().toISOString();
+  if (timestamp) {
+    try {
+      const date = new Date(timestamp);
+      formattedDate = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+    } catch (e) {
+      formattedDate = timestamp;
+    }
+  }
+
+  let whatsappMessage = '*🔒 Security Contact Form*\n\n';
+  whatsappMessage += `📅 *Date:* ${formattedDate}\n`;
+  whatsappMessage += `👤 *Name:* ${name}\n`;
+  whatsappMessage += `📧 *Email:* ${email}\n`;
+  whatsappMessage += `📱 *Contact Number:* ${contact_number}\n`;
+  whatsappMessage += `💬 *Message:* ${message}\n`;
+
+  return whatsappMessage;
+}
+
 function ensureCustomQueueFile() {
   if (!fs.existsSync(CUSTOM_QUEUE_FILE_PATH)) {
     fs.writeFileSync(CUSTOM_QUEUE_FILE_PATH, '[]', 'utf8');
@@ -420,13 +450,37 @@ app.get('/', (req, res) => {
 
 async function handleContactFormSubmission(req, res, options) {
   const { logBanner, inquiryTitle, successMessage, recipientNumbers } = options;
-  const contactData = { ...req.body, _inquiryTitle: inquiryTitle };
+  let contactData = { ...req.body, _inquiryTitle: inquiryTitle };
+
+  if (options.securityFieldsOnly) {
+    const name = typeof req.body?.name === 'string' ? req.body.name.trim() : '';
+    const email = typeof req.body?.email === 'string' ? req.body.email.trim() : '';
+    const contactNumberRaw = req.body?.contact_number ?? req.body?.contactNumber ?? req.body?.phone;
+    const contact_number = typeof contactNumberRaw === 'string' ? contactNumberRaw.trim() : '';
+    const message = typeof req.body?.message === 'string' ? req.body.message.trim() : '';
+
+    if (!name || !email || !contact_number || !message) {
+      return res.status(400).json({
+        success: false,
+        message: 'name, email, contact_number and message are required'
+      });
+    }
+
+    contactData = {
+      _inquiryTitle: inquiryTitle,
+      timestamp: req.body?.timestamp,
+      name,
+      email,
+      contact_number,
+      message
+    };
+  }
 
   // Console print the contact form data
   console.log(`\n========== ${logBanner} ==========`);
   console.log('Name:', contactData.name || 'Not provided');
   console.log('Email:', contactData.email || 'Not provided');
-  console.log('Phone:', contactData.phone || 'Not provided');
+  console.log('Phone:', contactData.phone || contactData.contact_number || 'Not provided');
   console.log('Country:', contactData.country || 'Not provided');
   console.log('Subject:', contactData.subject || 'Not provided');
   console.log('Message:', contactData.message || 'Not provided');
@@ -443,7 +497,9 @@ async function handleContactFormSubmission(req, res, options) {
   console.log('===========================================\n');
 
   // Send WhatsApp message
-  const whatsappMessage = formatContactFormMessage(contactData);
+  const whatsappMessage = options.securityFieldsOnly
+    ? formatSecurityContactMessage(contactData)
+    : formatContactFormMessage(contactData);
 
   // Wait for client to be ready before sending messages
   const clientReady = await waitForClientReady(WHATSAPP_READY_WAIT_MS);
@@ -481,7 +537,8 @@ app.post('/security/contactForm', (req, res) =>
     logBanner: 'SECURITY CONTACT FORM SUBMISSION',
     inquiryTitle: '*🔒 Security Contact Form*',
     successMessage: 'Security contact form submitted successfully',
-    recipientNumbers: SECURITY_CONTACT_RECIPIENTS
+    recipientNumbers: SECURITY_CONTACT_RECIPIENTS,
+    securityFieldsOnly: true
   })
 );
 
