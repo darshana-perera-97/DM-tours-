@@ -19,7 +19,7 @@ Returns success response with recipients + payload
 
 
 ------
-/security/contactForm is a POST API for security inquiries with a minimal payload.
+https://www.api.dmtours.lk/security/contactForm is a POST API for security inquiries with a minimal payload.
 
 Endpoint
 POST /security/contactForm
