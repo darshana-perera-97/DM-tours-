@@ -9,7 +9,7 @@ const qrcode = require('qrcode-terminal');
 const app = express();
 const PORT = 3057;
 const TOUR_CONTACT_RECIPIENTS = ['94771461925', '94778808689'];
-const SECURITY_CONTACT_RECIPIENTS = ['94771461925','94764030668'];
+const SECURITY_CONTACT_RECIPIENTS = ['94771461925','94764030668','447745994540'];
 const WHATSAPP_RECONNECT_INTERVAL_MS = 2 * 60 * 60 * 1000; // 2 hours
 const WHATSAPP_READY_WAIT_MS = 90 * 1000; // 90 seconds
 const QUEUE_PROCESS_INTERVAL_MS = 30 * 1000; // 30 seconds
@@ -294,7 +294,7 @@ function formatSecurityContactMessage(formData) {
     }
   }
 
-  let whatsappMessage = '*🔒 Security Contact Form*\n\n';
+  let whatsappMessage = '*🔒 Element-neetworks.com contact form submission*\n\n';
   whatsappMessage += `📅 *Date:* ${formattedDate}\n`;
   whatsappMessage += `👤 *Name:* ${name}\n`;
   whatsappMessage += `📧 *Email:* ${email}\n`;
@@ -535,7 +535,7 @@ app.post('/dm-tors/contactform', (req, res) =>
 app.post('/security/contactForm', (req, res) =>
   handleContactFormSubmission(req, res, {
     logBanner: 'SECURITY CONTACT FORM SUBMISSION',
-    inquiryTitle: '*🔒 Security Contact Form*',
+    inquiryTitle: '*🔒 Element-neetworks.com contact form submission*',
     successMessage: 'Security contact form submitted successfully',
     recipientNumbers: SECURITY_CONTACT_RECIPIENTS,
     securityFieldsOnly: true
